@@ -26,7 +26,7 @@ int	main(void)
 	printf("flags : +, width : 10, precision : va_arg : NULL, result : %+10p$\n", NULL);
 	printf("flags : -, width : 10, precision : va_arg : NULL, result : %-10p$\n", NULL);
 
-	printf("\n< precision : NULL >\n");
+	printf("\n< precision : zero >\n");
 	printf("flags : width : precision : 0, va_arg : 1234, result : %.0p$\n", 1234);
 	printf("flags : width : 0, precision : 0, va_arg : 1234, result : %0.0p$\n", 1234);
 	printf("flags : width : 10, precision : 0, va_arg : 1234, result : %10.0p$\n", 1234);
@@ -58,7 +58,7 @@ int	main(void)
 	printf("flags : +, width : 10, precision : va_arg : NULL, result : %+10s$\n", NULL);
 	printf("flags : -, width : 10, precision : va_arg : NULL, result : %-10s$\n", NULL);
 
-	printf("\n< precision : NULL >\n");
+	printf("\n< precision : zero >\n");
 	printf("flags : width : precision : 0, va_arg : abcd, result : %.0s$\n", "abcd");
 	printf("flags : width : 0, precision : 0, va_arg : abcd, result : %0.0s$\n", "abcd");
 	printf("flags : width : 10, precision : 0, va_arg : abcd, result : %10.0s$\n", "abcd");
@@ -125,7 +125,7 @@ int	main(void)
 	printf("flags : -, width : 10, precision : va_arg : NULL, result : %-10x$\n", NULL);
 
 
-	printf("\n< precision : NULL >\n");
+	printf("\n< precision : zero >\n");
 	printf("flags : width : precision : 0, va_arg : 0, result : %.0x$\n", 0);	
 	printf("flags : width : 0, precision : 0, va_arg : 0, result : %0.0x$\n", 0);
 	printf("flags : width : 10, precision : 0, va_arg : 0, result : %10.0x$\n", 0);	
