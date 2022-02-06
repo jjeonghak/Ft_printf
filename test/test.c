@@ -18,10 +18,10 @@ int	main(void)
 
 
 	printf("\n\n");
-    printf("********************************************************************************\n");
-    printf("*                                                                              *\n");
+    	printf("********************************************************************************\n");
+    	printf("*                                                                              *\n");
 	printf("*                                specifier : c                                 *\n");
-    printf("*                                                                              *\n");
+    	printf("*                                                                              *\n");
 	printf("********************************************************************************\n");
 
 	printf("\n< argument : NULL >\n");
@@ -55,7 +55,7 @@ int	main(void)
 
 	printf("\n< width & precision >\n");
 	printf("format : %%5.10c\t\targ : 'a'\t\tresult : %5.10c$\n", 'a');
-    printf("format : %%10.5c\t\targ : 'a'\t\tresult : %10.5c$\n", 'a');
+    	printf("format : %%10.5c\t\targ : 'a'\t\tresult : %10.5c$\n", 'a');
 	
 	printf("\n< width flags >\n");
 	printf("format : %%.10 c\t\targ : 'a'\t\tresult : %.10 c$\n", 'a');
@@ -92,7 +92,7 @@ int	main(void)
 	printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
 	printf("\n< argument flags : width >\n");
-    printf("format : %%*c\t\targ : 10, 'a'\t\tresult : %*c$\n", 10, 'a');
+    	printf("format : %%*c\t\targ : 10, 'a'\t\tresult : %*c$\n", 10, 'a');
 	printf("format : %%*c\t\targ : -10, 'a'\t\tresult : %*c$\n", -10, 'a');
 	printf("format : %%*c\t\targ : -+10, 'a'\t\tresult : %*c$\n", -+10, 'a');
 	printf("format : %%*c\t\targ : +-10, 'a'\t\tresult : %*c$\n", +-10, 'a');
@@ -103,10 +103,10 @@ int	main(void)
 
 
 	printf("\n\n");
-    printf("********************************************************************************\n");
-    printf("*                                                                              *\n");
+    	printf("********************************************************************************\n");
+   	printf("*                                                                              *\n");
 	printf("*                                specifier : s                                 *\n");
-    printf("*                                                                              *\n");
+    	printf("*                                                                              *\n");
 	printf("********************************************************************************\n");
 	printf("\n< argument : NULL >\n");
 	printf("format : %%s\t\targ : NULL\t\tresult : %s$\n", NULL);
@@ -139,7 +139,7 @@ int	main(void)
 
 	printf("\n< width & precision >\n");
 	printf("format : %%5.10s\t\targ : \"abcd\"\t\tresult : %5.10s$\n", "abcd");
-    printf("format : %%10.5s\t\targ : \"abcd\"\t\tresult : %10.5s$\n", "abcd");
+    	printf("format : %%10.5s\t\targ : \"abcd\"\t\tresult : %10.5s$\n", "abcd");
 	
 	printf("\n< width flags >\n");
 	printf("format : %%.10 s\t\targ : \"abcd\"\t\tresult : %.10 s$\n", "abcd");
@@ -187,8 +187,8 @@ int	main(void)
 
 
 	printf("\n\n");
-    printf("********************************************************************************\n");
-    printf("*                                                                              *\n");
+    	printf("********************************************************************************\n");
+    	printf("*                                                                              *\n");
 	printf("*                                specifier : p                                 *\n");
 	printf("*                                                                              *\n");
 	printf("********************************************************************************\n");
@@ -225,7 +225,7 @@ int	main(void)
 
 	printf("\n< width & precision >\n");
 	printf("format : %%5.10p\t\targ : 1234\t\tresult : %5.10p$\n", 1234);
-    printf("format : %%10.5p\t\targ : 1234\t\tresult : %10.5p$\n", 1234);
+    	printf("format : %%10.5p\t\targ : 1234\t\tresult : %10.5p$\n", 1234);
 
 	printf("\n< width flags >\n");
 	printf("format : %%.10 p\t\targ : 1234\t\tresult : %.10 p$\n", 1234);
@@ -263,7 +263,7 @@ int	main(void)
 
 
 	printf("\n< argument flags : width >\n");
-    printf("format : %%*p\t\targ : 10, 1234\t\tresult : %*p$\n", 10, 1234);
+    	printf("format : %%*p\t\targ : 10, 1234\t\tresult : %*p$\n", 10, 1234);
 	printf("format : %%*p\t\targ : -10, 1234\t\tresult : %*p$\n", -10, 1234);
 	printf("format : %%*p\t\targ : -+10, 1234\tresult : %*p$\n", -+10, 1234);
 	printf("format : %%*p\t\targ : +-10, 1234\tresult : %*p$\n", +-10, 1234);
@@ -313,7 +313,7 @@ int	main(void)
 
 	printf("\n< width & precision >\n");
 	printf("format : %%5.10d\t\targ : 1234\t\tresult : %5.10d$\n", 1234);
-    printf("format : %%10.5d\t\targ : 1234\t\tresult : %10.5d$\n", 1234);
+    	printf("format : %%10.5d\t\targ : 1234\t\tresult : %10.5d$\n", 1234);
 
 	printf("\n< width flags >\n");
 	printf("format : %%10 d\t\targ : 1234\t\tresult : %10 d$\n", 1234);
@@ -350,7 +350,7 @@ int	main(void)
 	printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
 	printf("\n< argument flags : width >\n");
-    printf("format : %%*d\t\targ : 10, 1234\t\tresult : %*d$\n", 10, 1234);
+    	printf("format : %%*d\t\targ : 10, 1234\t\tresult : %*d$\n", 10, 1234);
 	printf("format : %%*d\t\targ : -10, 1234\t\tresult : %*d$\n", -10, 1234);
 	printf("format : %%*d\t\targ : -+10, 1234\tresult : %*d$\n", -+10, 1234);
 	printf("format : %%*d\t\targ : +-10, 1234\tresult : %*d$\n", +-10, 1234);
@@ -399,7 +399,7 @@ int	main(void)
 
 	printf("\n< width & precision >\n");
 	printf("format : %%5.10x\t\targ : 1234\t\tresult : %5.10x$\n", 1234);
-    printf("format : %%10.5x\t\targ : 1234\t\tresult : %10.5x$\n", 1234);
+    	printf("format : %%10.5x\t\targ : 1234\t\tresult : %10.5x$\n", 1234);
 
 	printf("\n< width flags >\n");
 	printf("format : %%10 x\t\targ : 1234\t\tresult : %10 x$\n", 1234);
@@ -437,7 +437,7 @@ int	main(void)
 	printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
 	printf("\n< argument flags : width >\n");
-    printf("format : %%*x\t\targ : 10, 1234\t\tresult : %*x$\n", 10, 1234);
+    	printf("format : %%*x\t\targ : 10, 1234\t\tresult : %*x$\n", 10, 1234);
 	printf("format : %%*x\t\targ : -10, 1234\t\tresult : %*x$\n", -10, 1234);
 	printf("format : %%*x\t\targ : -+10, 1234\tresult : %*x$\n", -+10, 1234);
 	printf("format : %%*x\t\targ : +-10, 1234\tresult : %*x$\n", +-10, 1234);
@@ -448,11 +448,11 @@ int	main(void)
 
 
 	printf("\n\n");
-    printf("********************************************************************************\n");
-    printf("*                                                                              *\n");
-    printf("*                               specifier :  no                                *\n");
-    printf("*                                                                              *\n");
-    printf("********************************************************************************\n");
+    	printf("********************************************************************************\n");
+    	printf("*                                                                              *\n");
+    	printf("*                               specifier :  no                                *\n");
+    	printf("*                                                                              *\n");
+    	printf("********************************************************************************\n");
 
 	printf("\n< no specifier >\n");
 	printf("format : %%q\t\t\t\t\tresult : %q$\n");
