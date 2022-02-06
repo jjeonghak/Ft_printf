@@ -10,8 +10,8 @@ int	main(void)
 	printf("*                                                                              *\n");
 	printf("*                                                                              *\n");
 	printf("*   format: formatted data for STDOUT                                          *\n");
-	printf("*   arg : argument                                                             *\n");
-	printf("*   result : STDOUT                                                            *\n");
+	printf("*   arg: argument                                                             *\n");
+	printf("*   result: STDOUT                                                            *\n");
 	printf("*   $: End of Line                                                             *\n");
 	printf("*                                                                              *\n");
 	printf("********************************************************************************\n");
