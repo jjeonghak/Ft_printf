@@ -634,6 +634,8 @@ int	main(void)
 	printf("format : %%4294967295d 10d\t\targ : 1234\tresult : %4294967295 10d$\n", 1234);
 	printf("format : %%9223372036854775808 10d\targ : 1234\tresult : %9223372036854775808 10d$\n", 1234);
 	printf("format : %%18446744073709551616 10d\targ : 1234\tresult : %18446744073709551616 10d$\n", 1234);
+	
+	
 	printf("\n\n\n");
 	return 0;
 }
