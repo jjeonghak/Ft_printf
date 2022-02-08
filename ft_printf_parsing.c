@@ -2,7 +2,7 @@
 
 void	parsing_flags(t_spec *fs, const char *format, int *i)
 {
-	while (ft_strchr(FLAGS, *(format + *i)))
+	while (ft_strchr(FLAGS, *(format + *i)) && *(format + *i) != '\0')
 	{
 		if (*(format + *i) == '-')
 			fs->flags |= 16;
@@ -21,7 +21,7 @@ void	parsing_flags(t_spec *fs, const char *format, int *i)
 
 void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
 {
-	unsinged int	result;
+	unsigned int	result;
 
 	result = 0;
 	if (*(format + *i) == '*')
@@ -31,12 +31,13 @@ void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
 	}
 	else
 	{
-		while (ft_isdigit(*(format + *i)) && result < WMAX)
+		while (ft_isdigit(*(format + *i)) && *(format + *i) != '\0')
 		{
-			result *= 10;
-			result += *(format + *i) - '0';
-			if (result > WIDTH_MAX)
-				break ;
+			if (result < INF)
+			{
+				result *= 10;
+				result += *(format + *i) - '0';
+			}
 			*i += 1;
 		}
 	}
@@ -46,11 +47,9 @@ void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
 
 void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
 {
-	int	result;
-
+	unsigned int	result;
+	//int로 한 이유 뭐더라
 	result = 0;
-	if (*(format + *i) != '.')
-		return ;
 	*i += 1;
 	if (*(format + *i) == '*')
 	{
@@ -59,10 +58,15 @@ void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
 	}
 	else
 	{
-		while (ft_isdigit(*(format + *i)) && result < WMAX)
+		parsing_flags(fs, format, i);
+		//'.'과 숫자 사이 flags 적용됨
+		while (ft_isdigit(*(format + *i)) && *(format + *i) != '\0')
 		{
-			result *= 10;
-			result += *(format + *i) - '0';
+			if (result < INF)
+			{
+				result *= 10;
+				result += *(format + *i) - '0';
+			}
 			*i += 1;
 		}
 	}
@@ -77,13 +81,14 @@ int	parsing_specifier(t_spec *fs, va_lsit ap, int spec)
 	else if (spec == 's')
 		return (print_width_str(fs, va_arg(ap, char *)));
 	else if (spec == 'p')
-		return (print_width_nbr(fs, va_arg(ap, unsinged long long)));
+		return (print_width_ull(fs, va_arg(ap, unsinged long long)));
 	else if (spec == 'u' || spec == 'x' || spec == 'X')
-		return (print_width_nbr(fs, va_arg(ap, unsigned int)));
+		return (print_width_uint(fs, spec, va_arg(ap, unsigned int)));
 	else if (spec == 'd' || spec == 'i')
-		return (print_width_nbr(fs, va_arg(ap, int)));
+		return (print_width_int(fs, va_arg(ap, int)));
 	else if (spec == '%')
 		return (print_width_char(fs, '%'));
 	else
 		return (print_nospec(fs));
+		//핸들링 결정 필요, 1)아예 없는 경우 2)마지막에 존재하는경우
 }

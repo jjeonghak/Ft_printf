@@ -5,7 +5,7 @@
 # include<unistd.h>
 # include<stdarg.h>
 
-# define WMAX 2147483614
+# define INF 2147483647
 # define FLAGS "-+ #0"
 
 typedef struct s_spec
@@ -13,7 +13,7 @@ typedef struct s_spec
 	int				error_check;
 	unsigned int	flags;
 	unsigned int	width;
-	unsigned int	intprecision;
+	unsigend int	precision;
 }		t_spec;
 
 #endif

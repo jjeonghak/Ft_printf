@@ -5,18 +5,14 @@ void	init_format_specifier(t_spec *fs)
 	fs->error_check = 0;
 	fs->flags = 0;
 	fs->width = 0;
-	fs->precision = 0;
+	fs->precision = -1;
 	return ;
 }
 
-int	ft_putchar(char c)
+int	nbrlen(t_spec *fs, unsigned long long  nbr);
 {
-	write(1, &c, 1);
-	return (1);
-}
+	int	result;
 
-int	ft_putstr(char *s, int n)
-{
-	write(1, s, n);
-	return (n);
+	result = 0;
+	if (fs->flags & 2 && fs->)
 }
