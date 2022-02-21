@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 18:32:03 by jeonghak          #+#    #+#             */
+/*   Updated: 2022/02/21 11:53:00 by jeonghak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -7,13 +19,18 @@
 
 # define INF 2147483647
 # define FLAGS "-+ #0"
+# define SPECS "cspdiuxX%"
 
 typedef struct s_spec
 {
-	int				error_check;
-	unsigned int	flags;
-	unsigned int	width;
-	unsigend int	precision;
+	char			spec;
+	char			prefix;
+	int				error;
+	int				flags;
+	int				base;
+	unsigned int	total_width;
+	long long		width;
+	long long		precision;
 }		t_spec;
 
 #endif

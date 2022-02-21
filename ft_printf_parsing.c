@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_parsing.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 18:31:22 by jeonghak          #+#    #+#             */
+/*   Updated: 2022/02/21 11:53:32 by jeonghak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	parsing_flags(t_spec *fs, const char *format, int *i)
@@ -16,40 +28,39 @@ void	parsing_flags(t_spec *fs, const char *format, int *i)
 			fs->flags |= 1;
 		*i += 1;
 	}
+	if (flags & 8)
+		fs->prefix = '+';
+	else if (flags & 4)
+		fs->prefix = ' ';
+	else if (flags & 2)
+		fs->prefix = '0';
 	return ;
 }
 
 void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
 {
-	unsigned int	result;
+	long long	result;
 
-	result = 0;
 	if (*(format + *i) == '*')
 	{
 		result = va_arg(ap, int);
+		if (result < 0)
+		{
+			result *= -1;
+			fs->flags |= 16;
+		}
 		*i += 1;
 	}
 	else
-	{
-		while (ft_isdigit(*(format + *i)) && *(format + *i) != '\0')
-		{
-			if (result < INF)
-			{
-				result *= 10;
-				result += *(format + *i) - '0';
-			}
-			*i += 1;
-		}
-	}
+		result = atoi_format(format, i);
 	fs->width = result;
 	return ;
 }
 
 void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
 {
-	unsigned int	result;
-	//int로 한 이유 뭐더라
-	result = 0;
+	long long	result;
+
 	*i += 1;
 	if (*(format + *i) == '*')
 	{
@@ -57,38 +68,21 @@ void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
 		*i += 1;
 	}
 	else
-	{
-		parsing_flags(fs, format, i);
-		//'.'과 숫자 사이 flags 적용됨
-		while (ft_isdigit(*(format + *i)) && *(format + *i) != '\0')
-		{
-			if (result < INF)
-			{
-				result *= 10;
-				result += *(format + *i) - '0';
-			}
-			*i += 1;
-		}
-	}
+		result = atoi_format(format, i);
 	fs->precision = result;
 	return ;
 }
 
-int	parsing_specifier(t_spec *fs, va_lsit ap, int spec)
+int	parsing_specifier(t_spec *fs, va_lsit ap)
 {
-	if (spec == 'c')
+	if (fs->spec == 'c')
 		return (print_width_char(fs, va_arg(ap, int)));
-	else if (spec == 's')
+	else if (fs->spec == 's')
 		return (print_width_str(fs, va_arg(ap, char *)));
-	else if (spec == 'p')
-		return (print_width_ull(fs, va_arg(ap, unsinged long long)));
-	else if (spec == 'u' || spec == 'x' || spec == 'X')
-		return (print_width_uint(fs, spec, va_arg(ap, unsigned int)));
-	else if (spec == 'd' || spec == 'i')
-		return (print_width_int(fs, va_arg(ap, int)));
-	else if (spec == '%')
+	else if (fs->spec == 'p')
+		return (print_width_nbr(fs, va_arg(ap, unsigned long long)));
+	else if (fs->spec == '%')
 		return (print_width_char(fs, '%'));
 	else
-		return (print_nospec(fs));
-		//핸들링 결정 필요, 1)아예 없는 경우 2)마지막에 존재하는경우
+		return (print_width_nbr(fs, va_arg(ap, unsigned int)));
 }

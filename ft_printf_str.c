@@ -1,9 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_str.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 18:31:33 by jeonghak          #+#    #+#             */
+/*   Updated: 2022/02/08 18:31:38 by jeonghak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	print_width(int len, char c)
+void	print_width(int len, t_spec *fs)
 {
+	int	chr;
+
+	chr = fs->flags & 1;
 	while (len--)
-		ft_putchar_fd(c, 1);
+	{
+		if (chr)
+			ft_putchar_fd('0', 1);
+		else
+			ft_putchar_fd(' ', 1);
+	}
 	return ;
 }
 
@@ -14,11 +34,11 @@ int	print_width_char(t_spec *fs, char c)
 		if (fs->flags & 16)
 		{
 			ft_putchar_fd(c, 1);
-			print_width(fs->width - 1, ' ');
+			print_width(fs->width - 1. fs);
 		}
 		else
 		{
-			print_width(fs->width - 1, ' ');
+			print_width(fs->width - 1, fs);
 			ft_putchar_fd(c, 1);
 		}
 		return ((int)(fs->width));
@@ -42,11 +62,11 @@ int	print_width_str(t_spec *fs, char *s)
 	else if (fs->flags & 16)
 	{
 		ft_putstr_fd((char *s), 1);
-		print_width(fs->width - len, ' ');
+		print_width(fs->width - len, fs);
 	}
 	else
 	{
-		print_width(fs->width - len, ' ');
+		print_width(fs->width - len, fs);
 		ft_putstr_fd((char *s), 1);
 	}
 	return ((int)(fs->width));
