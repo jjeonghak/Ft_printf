@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:33 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/08 18:31:38 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 09:53:56 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ void	print_width(int len, t_spec *fs)
 
 int	print_width_char(t_spec *fs, char c)
 {
-	if (fs->width > 1)
+	if (total_width + 1 > INF)
+	{
+		fs->error = 1;
+		return (0);
+	}
+	else if (fs->width > 1)
 	{
 		if (fs->flags & 16)
 		{
@@ -51,23 +56,26 @@ int	print_width_str(t_spec *fs, char *s)
 {
 	int	len;
 
+	if (fs->precision == 0)
+	{
+		fs->precision = -1;
+		return (print_width_str(fs, ""));
+	}
 	if (s == NULL)
 		return (print_width_str(fs, "(null)"));
 	len = ft_strlen(s);
-	if (len >= fs->width)
+	if (len >= (int)fs->width)
 	{
-		ft_putstr_fd((char *s), 1);
+		if (total_width + (unsigned int)len > INF)
+			fs->error = 1;
+		else
+			ft_putstr_fd(s, 1);
 		return (len);
 	}
-	else if (fs->flags & 16)
-	{
-		ft_putstr_fd((char *s), 1);
-		print_width(fs->width - len, fs);
-	}
-	else
-	{
-		print_width(fs->width - len, fs);
-		ft_putstr_fd((char *s), 1);
-	}
+	if (fs->flags & 16)
+		ft_putstr_fd(s, 1);
+	print_width(fs->width - len, fs);
+	if (!(fs->flags & 16))
+		ft_putstr_fd(s, 1);
 	return ((int)(fs->width));
 }

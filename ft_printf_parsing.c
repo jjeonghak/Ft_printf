@@ -5,12 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 18:31:22 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/21 11:53:32 by jeonghak         ###   ########.fr       */
+/*   Created: 2022/02/23 11:01:48 by jeonghak          #+#    #+#             */
+/*   Updated: 2022/02/23 11:01:51 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	select_sign(t_spec *fs, unsigned long long n)
+{
+	if ((int)n < 0)
+		fs->sign = '-';
+	else if (flags & 8)
+		fs->sign = '+';
+	else if (flags & 4)
+		fs->sign = ' ';
+	return ;
+}
 
 void	parsing_flags(t_spec *fs, const char *format, int *i)
 {
@@ -28,13 +39,6 @@ void	parsing_flags(t_spec *fs, const char *format, int *i)
 			fs->flags |= 1;
 		*i += 1;
 	}
-	if (flags & 8)
-		fs->prefix = '+';
-	else if (flags & 4)
-		fs->prefix = ' ';
-	else if (flags & 2)
-		fs->prefix = '0';
-	return ;
 }
 
 void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
@@ -75,14 +79,20 @@ void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
 
 int	parsing_specifier(t_spec *fs, va_lsit ap)
 {
+	unsigned long long	n;
+
 	if (fs->spec == 'c')
 		return (print_width_char(fs, va_arg(ap, int)));
 	else if (fs->spec == 's')
 		return (print_width_str(fs, va_arg(ap, char *)));
 	else if (fs->spec == 'p')
-		return (print_width_nbr(fs, va_arg(ap, unsigned long long)));
+		return (print_nbr(fs, va_arg(ap, unsigned long long)));
 	else if (fs->spec == '%')
 		return (print_width_char(fs, '%'));
 	else
-		return (print_width_nbr(fs, va_arg(ap, unsigned int)));
+	{
+		n = va_arg(ap, unsigned int);
+		select_sign(fs, n);
+		return (print_nbr(fs, n));
+	}
 }

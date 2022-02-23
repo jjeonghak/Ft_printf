@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 14:37:05 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/21 12:34:23 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 13:45:04 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ char	*putchar_buf(int c, int size)
 
 void	init_format_specifier(t_spec *fs, unsigned int pcnt)
 {
-	fs->prefix = NULL;
+	fs->sign = NULL;
 	fs->spec = 0;
 	fs->error = 0;
 	fs->flags = 0;
-	fs->base = 0;
+	fs->base = 10;
 	fs->total_width = pcnt;
 	fs->width = 0;
 	fs->precision = -1;
@@ -58,4 +58,19 @@ long long	atoi_format(const char *format, int *i)
 		*i += 1;
 	}
 	return (result);
+}
+
+int	intlen_base(t_spec fs, unsigned long long n)
+{
+	int	cnt;
+
+	cnt = 0;
+	while (n)
+	{
+		cnt++;
+		n /= fs->base;
+	}
+	if (cnt == 0)
+		return (1);
+	return (cnt);
 }

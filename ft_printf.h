@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:32:03 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/21 11:53:00 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 13:09:55 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct s_spec
 {
 	char			spec;
-	char			prefix;
+	char			sign;
 	int				error;
 	int				flags;
 	int				base;

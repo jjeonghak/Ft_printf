@@ -1,47 +1,132 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_nbr.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/23 13:45:17 by jeonghak          #+#    #+#             */
+/*   Updated: 2022/02/23 13:45:19 by jeonghak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static char	add_prefix(t_spec *fs, unsigned long long n)
+char	*ntoa_base(t_spec *fs, unsigned long long n, char *base)
+{
+	char	*nbr;
+	int		size;
+
+	size = intlen_base(fs, n);
+	nbr = (char *)malloc(size + 1);
+	if (nbr == NULL)
+		return (NULL);
+	*(nbr + size) = '\0';
+	while (size--)
+	{
+		if (fs->spec == 'X')
+			*(nbr + size) = *ft_strchr("0123456789ABCDEF", n % 16);
+		else if (fs->base == 16)
+			*(nbr + size) = *ft_strchr("0123456789abcdef", n % 16);
+		else
+			*(nbr + size) = *ft_strchr("0123456789", n % 10);
+		n /= fs->base;
+	}
+	return (nbr);
+}
+
+static char	*add_prefix(t_spec *fs, unsigned long long n)
 {
 	char	*buf;
 
-	buf = ft_strdup("");
 	if (fs->spec == 'p' || fs->spec == 'x' || fs->spec == 'X')
 	{
-		fs->base = 1;
+		fs->base = 16;
 		if (fs->spec == 'p' || (fs->flags & 2 && fs->spec == 'x'))
-			buf = ft_strjoin("0x", buf);
+			buf = ft_strdup("0x");
 		else if (fs->flags & 2 && fs->spec == 'X')
-			buf = ft_strjoin("0X", buf);
+			buf = ft_strdup("0X");
 		fs->width -= 2;
 	}
-	else if (fs->flags & 12 && (fs->spec == 'd' || fs->spec == 'i'))
+	else if (((int)n < 0 || fs->flags & 12) && fs->spec != 'u')
 	{
-		buf = ft_strjoin(putchar_buf(fs->prefix, 1), buf);
+		buf = putchar_buf(fs->sign, 1);
 		fs->width -= 1;
 	}
+	else
+		buf = ft_strdup("");
+	return (buf);
 }
 
-static char	make_str(char *buf, t_spec *fs, unsigned long long n)
+static char	*add_suffix(t_spec *fs, char *p, unsigned long long n)
 {
-	if (buf == NULL)
+	char	*nbr;
+	char	*mid;
+	char	*suffix;
+
+	if (fs->presicion == 0 && n == 0)
+		return ("");
+	nbr = ntoa_base(fs, n, nbr, NULL);
+	if (nbr == NULL || p == NULL)
+	{
+		free(nbr);
 		return (NULL);
-	
+	}
+	if (fs->precision != -1)
+		mid = putchar_buf('0', (int)fs->precision - ft_strlen(nbr));
+	else if (!(fs->flags & 16) && fs->flags & 1)
+		mid = putchar_buf('0', (int)fs->width - ft_strlen(nbr) - ft_strlen(p));
+	else
+		mid = ft_strdup("");
+	if (mid != NULL)
+		suffix = ft_strjoin(mid, nbr);
+	free(nbr);
+	free(mid);
+	return (suffix);
 }
 
-int	print_width_nbr(t_spec *fs, unsigned long long n)
+static char	*merge_width(t_spec *fs, char *p, char *s)
+{
+	char	*width;
+	char	*result;
+
+	fs->width -= (long long)(ft_strlen(p) + ft_strlen(s)) + fs->precision;
+	if (fs->flags & 16 || !(fs->flags & 1))
+		width = putstr_buf(' ', (int)fs->width);
+	else
+		width = putstr_buf('0', (int)fs->width);
+	if (p == NULL || s == NULL || width == NULL)
+	{
+		free(width);
+		return (NULL);
+	}
+	if (fs->flags & 16)
+		result = ft_strjoin(ft_strjoin(p, s), width);
+	else
+		result = ft_strjoin(width, ft_strjoin(p, s));
+	free(width);
+	return (result);
+}
+
+int	print_nbr(t_spec *fs, unsigned long long n)
 {
 	char	*buf;
+	char	*prefix;
+	char	*suffix;
 	int		result;
 
-	buf = add_prefix(fs, n);
-	buf = make_str(buf, fs, n);
+	prefix = add_prefix(fs, n);
+	suffix = add_suffix(fs, prefix, n);
+	buf = merge_width(fs, prefix, suffix);
 	if (buf == NULL)
-	{
 		fs->error = 1;
-		return (0);
+	else
+	{
+		result = ft_strlen(buf);
+		ft_putstr_fd(buf, 1);
 	}
-	result = ft_strlen(buf);
-	ft_putstr_fd(buf, 1);
+	free(prefix);
+	free(siffix);
 	free(buf);
 	return (result);
 }
