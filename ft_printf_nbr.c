@@ -6,13 +6,15 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:45:17 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/23 13:45:19 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 22:04:39 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ntoa_base(t_spec *fs, unsigned long long n, char *base)
+//음수 int의 경우 unsigned long long 시 부호비트까지 고려가 필요
+//또한 % 연산 중에 음수방지 필수
+static char	*ntoa_base(t_spec *fs, unsigned long long n)
 {
 	char	*nbr;
 	int		size;
@@ -46,6 +48,8 @@ static char	*add_prefix(t_spec *fs, unsigned long long n)
 			buf = ft_strdup("0x");
 		else if (fs->flags & 2 && fs->spec == 'X')
 			buf = ft_strdup("0X");
+		else
+			buf = ft_strdup("");
 		fs->width -= 2;
 	}
 	else if (((int)n < 0 || fs->flags & 12) && fs->spec != 'u')
@@ -64,9 +68,10 @@ static char	*add_suffix(t_spec *fs, char *p, unsigned long long n)
 	char	*mid;
 	char	*suffix;
 
-	if (fs->presicion == 0 && n == 0)
+	suffix = NULL;
+	if (fs->precision == 0 && n == 0)
 		return ("");
-	nbr = ntoa_base(fs, n, nbr, NULL);
+	nbr = ntoa_base(fs, n);
 	if (nbr == NULL || p == NULL)
 	{
 		free(nbr);
@@ -92,9 +97,9 @@ static char	*merge_width(t_spec *fs, char *p, char *s)
 
 	fs->width -= (long long)(ft_strlen(p) + ft_strlen(s)) + fs->precision;
 	if (fs->flags & 16 || !(fs->flags & 1))
-		width = putstr_buf(' ', (int)fs->width);
+		width = putchar_buf(' ', (int)fs->width);
 	else
-		width = putstr_buf('0', (int)fs->width);
+		width = putchar_buf('0', (int)fs->width);
 	if (p == NULL || s == NULL || width == NULL)
 	{
 		free(width);
@@ -119,14 +124,17 @@ int	print_nbr(t_spec *fs, unsigned long long n)
 	suffix = add_suffix(fs, prefix, n);
 	buf = merge_width(fs, prefix, suffix);
 	if (buf == NULL)
+	{
 		fs->error = 1;
+		result = 0;
+	}
 	else
 	{
 		result = ft_strlen(buf);
 		ft_putstr_fd(buf, 1);
 	}
 	free(prefix);
-	free(siffix);
+	free(suffix);
 	free(buf);
 	return (result);
 }

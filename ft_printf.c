@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:15 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/20 11:05:11 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 21:51:14 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static int	check_error(t_spec *fs, const char *format, int *i)
 	return (0);
 }
 
-static int	parsing_subseq(t_spec *fs, va_list ap, const char *format, int *i)
+static int	parse_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 {
 	while (*(format + *i) != '\0')
 	{
-		if (ft_strchr(FALGS, *(format + *i)))
-			parsing_flags(fs, format, i);
+		if (ft_strchr(FLAGS, *(format + *i)))
+			parse_flags(fs, format, i);
 		else if (*(format + *i) == '.')
-			parsing_precision(fs, ap, format, i);
+			parse_precision(fs, ap, format, i);
 		else if (ft_isdigit(*(format + *i)) || *(format + *i) == '*')
-			parsing_width(fs, ap, format, i);
+			parse_width(fs, ap, format, i);
 		else if (ft_strchr(SPECS, *(format + *i)))
 			break ;
 		else
@@ -46,14 +46,14 @@ static int	parsing_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 	else
 	{
 		fs->spec = *(format + *i);
-		return (parsing_specifier(fs, ap));
+		return (parse_specifier(fs, ap));
 	}
 }
 
-static int	parsing_format(va_list ap, const char *format)
+static int	parse_format(va_list ap, const char *format)
 {
 	int				i;
-	t_spec			fs;
+	t_spec			*fs;
 	unsigned int	pcnt;
 
 	i = 0;
@@ -67,10 +67,13 @@ static int	parsing_format(va_list ap, const char *format)
 		{
 			i++;
 			init_format_specifier(fs, pcnt);
-			pcnt += (unsigned int)pasing_subseq(fs, ap, format, &i);
+			pcnt += (unsigned int)parse_subseq(fs, ap, format, &i);
 		}
 		else
-			pcnt += (unsigned int)ft_putchar_fd(*(format + i), 1);
+		{
+			ft_putchar_fd(*(format + i), 1);
+			pcnt++;
+		}
 		i++;
 		if (fs->error || (pcnt == INF && *(format + i) != '\0'))
 			return (-1);
@@ -87,7 +90,7 @@ int	ft_printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(ap, format);
-	result = parsing_format(ap, format);
+	result = parse_format(ap, format);
 	va_end(ap);
 	return (result);
 }

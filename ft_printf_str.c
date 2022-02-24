@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:33 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/23 09:53:56 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 22:06:38 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_width(int len, t_spec *fs)
 
 int	print_width_char(t_spec *fs, char c)
 {
-	if (total_width + 1 > INF)
+	if (fs->total_width + 1 > INF)
 	{
 		fs->error = 1;
 		return (0);
@@ -39,7 +39,7 @@ int	print_width_char(t_spec *fs, char c)
 		if (fs->flags & 16)
 		{
 			ft_putchar_fd(c, 1);
-			print_width(fs->width - 1. fs);
+			print_width(fs->width - 1, fs);
 		}
 		else
 		{
@@ -66,7 +66,7 @@ int	print_width_str(t_spec *fs, char *s)
 	len = ft_strlen(s);
 	if (len >= (int)fs->width)
 	{
-		if (total_width + (unsigned int)len > INF)
+		if (fs->total_width + (unsigned int)len > INF)
 			fs->error = 1;
 		else
 			ft_putstr_fd(s, 1);

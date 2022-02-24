@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:01:48 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/23 11:01:51 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/23 22:05:36 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	select_sign(t_spec *fs, unsigned long long n)
 {
 	if ((int)n < 0)
 		fs->sign = '-';
-	else if (flags & 8)
+	else if (fs->flags & 8)
 		fs->sign = '+';
-	else if (flags & 4)
+	else if (fs->flags & 4)
 		fs->sign = ' ';
 	return ;
 }
 
-void	parsing_flags(t_spec *fs, const char *format, int *i)
+void	parse_flags(t_spec *fs, const char *format, int *i)
 {
 	while (ft_strchr(FLAGS, *(format + *i)) && *(format + *i) != '\0')
 	{
@@ -41,7 +41,7 @@ void	parsing_flags(t_spec *fs, const char *format, int *i)
 	}
 }
 
-void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
+void	parse_width(t_spec *fs, va_list ap, const char *format, int *i)
 {
 	long long	result;
 
@@ -61,7 +61,7 @@ void	parsing_width(t_spec *fs, va_list ap, const char *format, int *i)
 	return ;
 }
 
-void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
+void	parse_precision(t_spec *fs, va_list ap, const char *format, int *i)
 {
 	long long	result;
 
@@ -77,7 +77,7 @@ void	parsing_precision(t_spec *fs, va_list ap, const char *format, int *i)
 	return ;
 }
 
-int	parsing_specifier(t_spec *fs, va_lsit ap)
+int	parse_specifier(t_spec *fs, va_list ap)
 {
 	unsigned long long	n;
 
