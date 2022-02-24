@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:33 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/23 22:06:38 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/24 11:36:06 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	print_width(int len, t_spec *fs)
 {
 	int	chr;
 
-	chr = fs->flags & 1;
+	chr = fs->flags & 17;
 	while (len--)
 	{
-		if (chr)
+		if (chr == 1)
 			ft_putchar_fd('0', 1);
 		else
 			ft_putchar_fd(' ', 1);
@@ -56,13 +56,10 @@ int	print_width_str(t_spec *fs, char *s)
 {
 	int	len;
 
-	if (fs->precision == 0)
-	{
-		fs->precision = -1;
-		return (print_width_str(fs, ""));
-	}
 	if (s == NULL)
 		return (print_width_str(fs, "(null)"));
+	if (fs->precision != -1)
+		s = ft_substr(s, 0, (int)fs->precision);
 	len = ft_strlen(s);
 	if (len >= (int)fs->width)
 	{
@@ -77,5 +74,7 @@ int	print_width_str(t_spec *fs, char *s)
 	print_width(fs->width - len, fs);
 	if (!(fs->flags & 16))
 		ft_putstr_fd(s, 1);
+	if (fs->precision != -1)
+		free(s);
 	return ((int)(fs->width));
 }

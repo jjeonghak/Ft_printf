@@ -6,12 +6,12 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:15 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/23 21:51:14 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/24 10:50:33 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
 static int	check_error(t_spec *fs, const char *format, int *i)
 {
 	if (*(format + *i) == '\0')
@@ -36,7 +36,7 @@ static int	parse_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 		else if (ft_strchr(SPECS, *(format + *i)))
 			break ;
 		else
-			*i += 1;
+			*i = *i + 1;
 	}
 	if (check_error(fs, format, i))
 	{
@@ -53,21 +53,19 @@ static int	parse_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 static int	parse_format(va_list ap, const char *format)
 {
 	int				i;
-	t_spec			*fs;
+	t_spec			fs;
 	unsigned int	pcnt;
 
 	i = 0;
 	pcnt = 0;
-	fs = (t_spec *)malloc(sizeof(t_spec *));
-	if (fs == NULL)
-		return (-1);
+	init_format_specifier(&fs, pcnt);
 	while (*(format + i) != '\0')
 	{
 		if (*(format + i) == '%')
 		{
 			i++;
-			init_format_specifier(fs, pcnt);
-			pcnt += (unsigned int)parse_subseq(fs, ap, format, &i);
+			init_format_specifier(&fs, pcnt);
+			pcnt += (unsigned int)parse_subseq(&fs, ap, format, &i);
 		}
 		else
 		{
@@ -75,10 +73,9 @@ static int	parse_format(va_list ap, const char *format)
 			pcnt++;
 		}
 		i++;
-		if (fs->error || (pcnt == INF && *(format + i) != '\0'))
+		if (fs.error || (pcnt == INF && *(format + i) != '\0'))
 			return (-1);
 	}
-	free(fs);
 	return ((int)pcnt);
 }
 
