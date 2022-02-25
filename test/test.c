@@ -16,7 +16,7 @@ int	main(void)
 	printf("*                                                                              *\n");
 	printf("********************************************************************************\n");
 
-/*
+
 	printf("\n\n");
     printf("********************************************************************************\n");
     printf("*                                                                              *\n");
@@ -240,7 +240,7 @@ int	main(void)
     printf("format : %%.6+.10-.20s\targ : \"abcd\"\t\tresult : %.6+.10-.20s$\n", "abcd");
     printf("format : %%.6+.20-.10s\targ : \"abcd\"\t\tresult : %.6+.20-.10s$\n", "abcd");
 
-*/
+
 	printf("\n\n");
     printf("********************************************************************************\n");
     printf("*                                                                              *\n");
@@ -354,7 +354,7 @@ int	main(void)
     printf("format : %%.6+.10-.20p\targ : 1234\t\tresult : %.6+.10-.20p$\n", 1234);
     printf("format : %%.6+.20-.10p\targ : 1234\t\tresult : %.6+.20-.10p$\n", 1234);
 	
-/*
+
 	printf("\n\n");
 	printf("********************************************************************************\n");
 	printf("*                                                                              *\n");
@@ -697,64 +697,6 @@ int	main(void)
     printf("format : %%.6+.20-.10x\targ : 1234\t\tresult : %.6+.20-.10x$\n", 1234);
 	
 
-	printf("\n\n");
-    printf("********************************************************************************\n");
-    printf("*                                                                              *\n");
-    printf("*                               specifier :  no                                *\n");
-    printf("*                                                                              *\n");
-    printf("********************************************************************************\n");
-
-	printf("\n< no specifier >\n");
-	printf("format : %%q\t\t\t\t\tresult : %q$\n");
-	printf("format : %%10q\t\t\t\t\tresult : %10q$\n");
-	printf("format : %%10.0q\t\t\t\t\tresult : %10.0q$\n");
-	printf("format : %%010q\t\t\t\t\tresult : %010q$\n");
-	printf("format : %%#10q\t\t\t\t\tresult : %#10q$\n");
-	printf("format : %%+10q\t\t\t\t\tresult : %+10q$\n");
-	printf("format : %%-10q\t\t\t\t\tresult : %-10q$\n");
-	printf("format : %%2147483647q\t\t\t\tresult : ");
-	printf("%2147483647q");
-	printf("$\n");
-	printf("format : %%2147483648q\t\t\t\tresult : ");
-	printf("%2147483648q");
-	printf("$\n");
-
-	printf("\n< no specifier & specifier : c >\n");
-	printf("format : %%q%%c\t\targ : 'a'\t\tresult : %q%c$\n", 'a');
-	printf("format : %%qc\t\targ : 'a'\t\tresult : %qc$\n", 'a');
-	printf("format : %%qq%%c\t\targ : 'a'\t\tresult : %qq%c$\n", 'a');
-	printf("format : %%qqq%%c\t\targ : 'a'\t\tresult : %qqq%c$\n", 'a');
-
-	printf("\n< no specifier & specifier : s >\n");
-	printf("format : %%q%%s\t\targ : \"abcd\"\t\tresult : %q%s$\n", "abcd");
-	printf("format : %%qs\t\targ : \"abcd\"\t\tresult : %qs$\n", "abcd");
-	printf("format : %%qqs\t\targ : \"abcd\"\t\tresult : %qqs$\n", "abcd");
-	printf("format : %%qqqs\t\targ : \"abcd\"\t\tresult : %qqqs$\n", "abcd");
-
-	printf("\n< no specifier & specifier : p >\n");
-	printf("format : %%q%%p\t\targ : 1234\t\tresult : %q%p$\n", 1234);
-	printf("format : %%qp\t\targ : 1234\t\tresult : %qp$\n", 1234);
-	printf("format : %%qqp\t\targ : 1234\t\tresult : %qqp$\n", 1234);
-	printf("format : %%qqqp\t\targ : 1234\t\tresult : %qqqp$\n", 1234);
-
-	printf("\n< no specifier & specifier : d >\n");
-	printf("format : %%q%%d\t\targ : 1234\t\tresult : %q%d$\n", 1234);
-	printf("format : %%qd\t\targ : 1234\t\tresult : %qd$\n", 1234);
-	printf("format : %%qqd\t\targ : 1234\t\tresult : %qqd$\n", 1234);
-	printf("format : %%qqqd\t\targ : 1234\t\tresult : %qqqd$\n", 1234);
-	
-	printf("\n< no specifier & specifier : x >\n");
-	printf("format : %%q%%x\t\targ : 1234\t\tresult : %q%x$\n", 1234);
-	printf("format : %%qx\t\targ : 1234\t\tresult : %qx$\n", 1234);
-	printf("format : %%qqx\t\targ : 1234\t\tresult : %qqx$\n", 1234);
-	printf("format : %%qqqx\t\targ : 1234\t\tresult : %qqqx$\n", 1234);
-
-	printf("\n< width MAX >\n");
-	printf("format : %%2147483648 10d\t\targ : 1234\tresult : %2147483648 10d$\n", 1234);		
-	printf("format : %%4294967295d 10d\t\targ : 1234\tresult : %4294967295 10d$\n", 1234);
-	printf("format : %%9223372036854775808 10d\targ : 1234\tresult : %9223372036854775808 10d$\n", 1234);
-	printf("format : %%18446744073709551616 10d\targ : 1234\tresult : %18446744073709551616 10d$\n", 1234);
-*/
 	printf("\n\n\n");
 	return 0;
 }

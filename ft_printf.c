@@ -6,12 +6,25 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:15 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/24 10:50:33 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:28:19 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+
+static void	init_format_specifier(t_spec *fs, unsigned int pcnt)
+{
+	fs->sign = 0;
+	fs->spec = 0;
+	fs->error = 0;
+	fs->flags = 0;
+	fs->base = 10;
+	fs->total_width = pcnt;
+	fs->width = 0;
+	fs->precision = -1;
+	return ;
+}
+
 static int	check_error(t_spec *fs, const char *format, int *i)
 {
 	if (*(format + *i) == '\0')

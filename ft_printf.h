@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:32:03 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/24 10:14:19 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:29:21 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ int			intlen_base(t_spec *fs, unsigned long long n);
 
 long long	atoi_format(const char *format, int *i);
 
-void		ft_select_sign(t_spec *fs, unsigned long long n);
 void		parse_flags(t_spec *fs, const char *format, int *i);
 void		parse_width(t_spec *fs, va_list ap, const char *format, int *i);
 void		parse_precision(t_spec *fs, va_list ap, const char *format, int *i);
 void		print_width(int len, t_spec *fs);
-void		init_format_specifier(t_spec *fs, unsigned int pcnt);
 
 char		*putchar_buf(int c, int size);
 

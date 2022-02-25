@@ -6,12 +6,12 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:01:48 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/24 10:50:48 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:46:34 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include<stdio.h>
+
 static void	select_sign(t_spec *fs, unsigned long long n)
 {
 	if ((int)n < 0)
@@ -37,7 +37,7 @@ void	parse_flags(t_spec *fs, const char *format, int *i)
 			fs->flags |= 2;
 		else if (*(format + *i) == '0')
 			fs->flags |= 1;
-		*i = *i + 1;
+		*i += 1;
 	}
 	return ;
 }
@@ -54,7 +54,7 @@ void	parse_width(t_spec *fs, va_list ap, const char *format, int *i)
 			result *= -1;
 			fs->flags |= 16;
 		}
-		*i = *i + 1;
+		*i += 1;
 	}
 	else
 		result = atoi_format(format, i);
@@ -66,15 +66,16 @@ void	parse_precision(t_spec *fs, va_list ap, const char *format, int *i)
 {
 	long long	result;
 
-	*i = *i +  1;
+	*i += 1;
 	if (*(format + *i) == '*')
 	{
 		result = va_arg(ap, int);
-		*i = *i + 1;
+		*i += 1;
 	}
 	else
 		result = atoi_format(format, i);
-	fs->precision = result;
+	if (result >= 0)
+		fs->precision = result;
 	return ;
 }
 
@@ -86,10 +87,12 @@ int	parse_specifier(t_spec *fs, va_list ap)
 		return (print_width_char(fs, va_arg(ap, int)));
 	else if (fs->spec == 's')
 		return (print_width_str(fs, va_arg(ap, char *)));
-	else if (fs->spec == 'p')
-		return (print_nbr(fs, va_arg(ap, unsigned long long)));
 	else if (fs->spec == '%')
 		return (print_width_char(fs, '%'));
+	if (fs->precision != -1 && fs->flags & 1)
+		fs->flags -= 1;
+	if (fs->spec == 'p')
+		return (print_nbr(fs, va_arg(ap, unsigned long long)));
 	else
 	{
 		n = va_arg(ap, unsigned int);

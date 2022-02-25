@@ -6,12 +6,12 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 14:37:05 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/24 12:05:43 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:45:19 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include<stdio.h>
+
 char	*putchar_buf(int c, int size)
 {
 	char	*buf;
@@ -32,19 +32,6 @@ char	*putchar_buf(int c, int size)
 	return (buf);
 }
 
-void	init_format_specifier(t_spec *fs, unsigned int pcnt)
-{
-	fs->sign = 0;
-	fs->spec = 0;
-	fs->error = 0;
-	fs->flags = 0;
-	fs->base = 10;
-	fs->total_width = pcnt;
-	fs->width = 0;
-	fs->precision = -1;
-	return ;
-}
-
 long long	atoi_format(const char *format, int *i)
 {
 	long long	result;
@@ -57,7 +44,7 @@ long long	atoi_format(const char *format, int *i)
 			result *= 10;
 			result += *(format + *i) - '0';
 		}
-		*i = *i +  1;
+		*i += 1;
 	}
 	return (result);
 }
