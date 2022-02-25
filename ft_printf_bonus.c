@@ -6,11 +6,11 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:15 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 11:56:20 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:47:05 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 static void	init_format_specifier(t_spec *fs, unsigned int pcnt)
 {

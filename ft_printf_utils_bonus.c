@@ -6,11 +6,11 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 14:37:05 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 11:58:12 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:48:15 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 char	*putchar_buf(int c, int size)
 {

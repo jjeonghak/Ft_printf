@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:45:17 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 11:45:10 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:42:57 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	*add_prefix(t_spec *fs, unsigned long long n)
 	return (buf);
 }
 
-static char	*add_suffix(t_spec *fs, char *p, char *nbr, unsigned long long n)
+static char	*add_suffix(t_spec *fs, char *p, char *nbr)
 {
 	char	*mid;
 	char	*suffix;
@@ -73,8 +73,6 @@ static char	*add_suffix(t_spec *fs, char *p, char *nbr, unsigned long long n)
 	size = 0;
 	if (p == NULL || nbr == NULL)
 		return (NULL);
-	if (fs->precision == 0 && n == 0)
-		return (ft_strdup(""));
 	if (fs->precision < 0)
 		fs->precision = -1;
 	if (fs->precision != -1)
@@ -127,7 +125,7 @@ int	print_nbr(t_spec *fs, unsigned long long n)
 
 	prefix = add_prefix(fs, n);
 	nbr = ntoa_base(fs, n);
-	suffix = add_suffix(fs, prefix, nbr, n);
+	suffix = add_suffix(fs, prefix, nbr);
 	buf = merge_width(fs, prefix, suffix);
 	if (buf == NULL)
 	{

@@ -6,11 +6,11 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:01:48 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 11:57:43 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:48:00 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 static void	select_sign(t_spec *fs, unsigned long long n)
 {
