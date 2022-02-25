@@ -98,7 +98,7 @@ static char	*merge_width(t_spec *fs, char *p, char *s)
 	char	*width;
 	char	*result;
 
-	if (fs->width <= 0)
+	if (fs->width <= 0 && p != NULL && s != NULL)
 		return (ft_strjoin(p, s));
 	else if (fs->flags & 16 || !(fs->flags & 1))
 		width = putchar_buf(' ', (int)fs->width);
