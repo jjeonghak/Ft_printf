@@ -47,7 +47,7 @@ bonus:
 		make BONUS=1 all
 
 clean:
-		${RM} ${OBJ_ALL}
+		${RM} ${OBJ} ${OBJ_B}
 		make clean -C ${LIBFT}
 
 fclean: clean
