@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:15 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/27 14:36:29 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/27 17:33:37 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	check_error(t_spec *fs, const char *format, int *i)
 		return (1);
 	else if (fs->width + (long long)fs->total_width > INF)
 		return (1);
+	else if (*(format + *i) == 's' || *(format + *i) == 'c')
+		return (0);
 	else if (fs->precision + (long long)fs->total_width > INF)
 		return (1);
 	return (0);
@@ -49,7 +51,7 @@ static int	parse_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 		else if (ft_strchr(SPECS, *(format + *i)))
 			break ;
 		else
-			*i = *i + 1;
+			*i += 1;
 	}
 	if (check_error(fs, format, i))
 	{

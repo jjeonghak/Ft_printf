@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:33 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/27 14:36:47 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/27 17:34:31 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	print_width_str(t_spec *fs, char *s)
 
 	if (s == NULL)
 		return (print_width_str(fs, "(null)"));
-	if (fs->precision != -1)
+	if (fs->precision != -1 && fs->precision <= INF)
 		s = ft_substr(s, 0, (int)fs->precision);
 	len = ft_strlen(s);
 	if (len >= (int)fs->width)
@@ -74,7 +74,7 @@ int	print_width_str(t_spec *fs, char *s)
 	print_width(fs->width - len, fs);
 	if (!(fs->flags & 16))
 		ft_putstr_fd(s, 1);
-	if (fs->precision != -1)
+	if (fs->precision != -1 && fs->precision <= INF)
 		free(s);
 	return ((int)(fs->width));
 }
