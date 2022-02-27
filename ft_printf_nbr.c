@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:45:17 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 13:42:57 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/27 14:59:40 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char	*ntoa_base(t_spec *fs, unsigned long long n)
 {
 	char	*nbr;
+	char	*temp;
 	int		size;
 
 	if ((fs->spec == 'd' || fs->spec == 'i') && n > INF)
@@ -30,12 +31,11 @@ static char	*ntoa_base(t_spec *fs, unsigned long long n)
 	*(nbr + size) = '\0';
 	while (size--)
 	{
+		temp = ft_substr("0123456789abcdef", n % fs->base, 1);
 		if (fs->spec == 'X')
-			*(nbr + size) = (char)*ft_substr("0123456789ABCDEF", n % 16, 1);
-		else if (fs->base == 16)
-			*(nbr + size) = (char)*ft_substr("0123456789abcdef", n % 16, 1);
-		else
-			*(nbr + size) = (char)*ft_substr("0123456789", n % 10, 1);
+			*temp = ft_toupper(*temp);
+		*(nbr + size) = *temp;
+		free(temp);
 		n /= fs->base;
 	}
 	return (nbr);
@@ -95,7 +95,9 @@ static char	*merge_width(t_spec *fs, char *p, char *s)
 {
 	char	*width;
 	char	*result;
+	char	*temp;
 
+	result = NULL;
 	if (fs->width <= 0 && p != NULL && s != NULL)
 		return (ft_strjoin(p, s));
 	else if (fs->flags & 16 || !(fs->flags & 1))
@@ -107,11 +109,13 @@ static char	*merge_width(t_spec *fs, char *p, char *s)
 		free(width);
 		return (NULL);
 	}
-	if (fs->flags & 16)
-		result = ft_strjoin(ft_strjoin(p, s), width);
-	else
-		result = ft_strjoin(width, ft_strjoin(p, s));
+	temp = ft_strjoin(p, s);
+	if (temp != NULL && fs->flags & 16)
+		result = ft_strjoin(temp, width);
+	else if (temp != NULL && !(fs->flags & 16))
+		result = ft_strjoin(width, temp);
 	free(width);
+	free(temp);
 	return (result);
 }
 

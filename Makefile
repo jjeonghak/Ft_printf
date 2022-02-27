@@ -1,9 +1,9 @@
 ifdef BONUS
 		OBJ_ALL = ${OBJ_B}
-		INC_H = ${INC_B}
+		INC = ${INC_B}
 else
 		OBJ_ALL = ${OBJ}
-		INC_H = ${INC}
+		INC = ${INC_M}
 endif
 
 NAME = libftprintf.a
@@ -30,12 +30,12 @@ SRC_B = ft_printf_bonus.c \
 OBJ = ${SRC:.c=.o}
 OBJ_B = ${SRC_B:.c=.o}
 
-INC = ft_printf.h
+INC_M = ft_printf.h
 INC_B = ft_printf_bonus.h
 
 all: ${NAME}
 
-%.o: %.c ${INC_H}
+%.o: %.c ${INC}
 		${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJ_ALL}

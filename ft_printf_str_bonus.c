@@ -6,11 +6,11 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:33 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 12:47:29 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/02/27 14:36:47 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 void	print_width(int len, t_spec *fs)
 {
