@@ -11,11 +11,13 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 ## Information
 
 - #### _buffering : linux 파일 입출력의 물리적인 파일 조회 및 기록 횟수를 최소화하여 성능을 높이기 위해 사용_
+
 	1. fully buffered : 설정한 버퍼의 사이즈가 채워지면 버퍼에 있는 데이터 전송방식
 	2. line buffered : 버퍼에 개행 문자가 입력될 때마다 버퍼에 있는 데이터 전송방식
 	3. unbuffered : 버퍼를 통해 데이터 전송이 되지않고 직접적으로 쓰여지는 방식
 
 - #### _byte padding : 클래스 및 구조체에 바이트를 추가해 cpu 접근부하 감소_
+- 
  	32bit씩 접근하므로 char형과 같이 4바이트가 안되는 데이터에 바이트 추가
 
 - #### _variadic arguments(가변인수) : 인수의 개수와 타입이 미리 정해져 있지 않음_
@@ -25,12 +27,15 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 	#include<stdarg.h>
 	
 	#define _INTSIZEOF(n)_ ((sizeof(n) + sizeof(int) - 1) & ~(sizeof(int) - 1))
+	
 	 타입의 크기를 인트형 크기(4)의 배수로 올림, 바이트 패딩을 통해 cpu 접근부하 감소
 	 
 	#define va_start(ap, v) (ap = (va_list) & v + _INTSIZEOF(v)_)
+	
 	 ap는 마지막 고정인수 v의 주소값에서 v의 패딩된 크기만큼 더한 주소값으로 초기화 
 	 
 	#define va_arg(ap, t) (* (t * )((ap += _INTSIZEOF(t)_) - _INTSIZEOF(t)_))
+	
 	 1. ap를 일단 다음 가변 인수 위치로 보냄
 	 2. ap를 증가시킨 후 기존 주소로 재이동 
 	 3. t형 포인터로 타입 캐스팅 
