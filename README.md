@@ -75,7 +75,7 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 
 - #### int ft_printf(const char &#42format, ...)
 
-	**_format specifier prototype : &#37; &#91;flags&#93; &#91;width&#93; &#91;.precision&#93; &#91;length&#93; specifier_**
+	format specifier prototype : &#37; &#91;flags&#93; &#91;width&#93; &#91;.precision&#93; &#91;length&#93; specifier
 
 	
 	&#91;flags&#93;
