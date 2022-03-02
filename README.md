@@ -66,11 +66,11 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 
 - #### _가변인수 함수 : 반드시 하나 이상의 고정인수 필요(가변인수 시작주소를 알기위해)_
 
-##### int ft_printf(const char *format, ...)
+- #### int ft_printf(const char *format, ...)
 
-- #### _format specifier prototype : %[flags width .precision length] specifier_
+	**_format specifier prototype : %[flags width .precision length] specifier_**
 
-[flags]
+- [flags]
 
 	- : 주어진 필드의 왼쪽정렬(기본 : 오른쪽 정렬)
 	
