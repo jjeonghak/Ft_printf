@@ -70,7 +70,7 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 
 	**_format specifier prototype : %[flags width .precision length] specifier_**
 
-- [flags]
+	[flags]
 
 	- : 주어진 필드의 왼쪽정렬(기본 : 오른쪽 정렬)
 	
@@ -82,13 +82,13 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 	
 	0 : 길이 지정시 공백대신 0출력
 
-[width]
+	[width]
 
 	(number) : 최소인쇄길이, 공백을 이용해서 최소인쇄길이까지 채워 출력
 	
 	* : 가변인수로 길이 결정
 
-[.precision]
+	[.precision]
 
 	.number : (d, i, o, u, x, X) 서식자의 경우 앞에 number만큼 0으로 채워서 출력
 	
@@ -96,7 +96,7 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 		
 	.* : 가변인수로 정밀도 결정
 
-specifier
+	specifier
 
 	d : signed 10진수 정수
 	
