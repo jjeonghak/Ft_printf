@@ -17,57 +17,59 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 	3. unbuffered : 버퍼를 통해 데이터 전송이 되지않고 직접적으로 쓰여지는 방식
 
 - #### _byte padding : 클래스 및 구조체에 바이트를 추가해 cpu 접근부하 감소_
-- 
+
  	32bit씩 접근하므로 char형과 같이 4바이트가 안되는 데이터에 바이트 추가
 
 - #### _variadic arguments(가변인수) : 인수의 개수와 타입이 미리 정해져 있지 않음_
 
 - #### _stdarg.h(macro function)_
 
-	#include<stdarg.h>
+		#include<stdarg.h>
 	
-	#define _INTSIZEOF(n)_ ((sizeof(n) + sizeof(int) - 1) & ~(sizeof(int) - 1))
+		#define _INTSIZEOF(n)_ ((sizeof(n) + sizeof(int) - 1) & ~(sizeof(int) - 1))
 	
-	 타입의 크기를 인트형 크기(4)의 배수로 올림, 바이트 패딩을 통해 cpu 접근부하 감소
+	 		타입의 크기를 인트형 크기(4)의 배수로 올림, 바이트 패딩을 통해 cpu 접근부하 감소
 	 
-	#define va_start(ap, v) (ap = (va_list) & v + _INTSIZEOF(v)_)
+		#define va_start(ap, v) (ap = (va_list) & v + _INTSIZEOF(v)_)
 	
-	 ap는 마지막 고정인수 v의 주소값에서 v의 패딩된 크기만큼 더한 주소값으로 초기화 
+	 		ap는 마지막 고정인수 v의 주소값에서 v의 패딩된 크기만큼 더한 주소값으로 초기화 
 	 
-	#define va_arg(ap, t) (* (t * )((ap += _INTSIZEOF(t)_) - _INTSIZEOF(t)_))
+		#define va_arg(ap, t) (* (t * )((ap += _INTSIZEOF(t)_) - _INTSIZEOF(t)_))
 	
-	 1. ap를 일단 다음 가변 인수 위치로 보냄
-	 2. ap를 증가시킨 후 기존 주소로 재이동 
-	 3. t형 포인터로 타입 캐스팅 
-	 4. ap 번지의 t형 데이터를 읽는다 
+			1. ap를 일단 다음 가변 인수 위치로 보냄
+			2. ap를 증가시킨 후 기존 주소로 재이동 
+	 		3. t형 포인터로 타입 캐스팅 
+	 		4. ap 번지의 t형 데이터를 읽는다 
 	
-	#define va_end(ap) (ap = (va_list)0)	
+		#define va_end(ap) (ap = (va_list)0)	
 
 - #### _va_list	ap : 함수로 전달되는 인수들은 스택에 저장되며 함수는 스택에서 인수를 꺼내 사용_
 	
-	스택에 있는 인수를 읽을 때 주소연산을 해야하며 현재 읽고 있는 번지를 기억하기 위해 va_list 형의 변수가 필요, va_list는 char * 로 정의되어 있음
+		스택에 있는 인수를 읽을 때 주소연산을 해야하며 현재 읽고 있는 번지를 기억하기 위해 va_list 형의 변수가 필요
 	
-	type	char * va_list;
+		va_list는 char * 로 정의되어 있음
+	
+		type	char * va_list;
 
 - #### _va_start(ap, 마지막 고정인수) : ap 포인터 변수가 첫 번째 가변인수를 가리키도록 초기화(가변인수를 읽기위한 준비)_
 	
-	void	va_start(va_list ap, last);
+		void	va_start(va_list ap, last);
 	
-	첫번째 가변인수 주소값 탐색을 위한 마지막 고정인수를 알규먼트로 전달
+		첫번째 가변인수 주소값 탐색을 위한 마지막 고정인수를 알규먼트로 전달
 
 - #### _va_arg(ap, 인수타입) : ap 주소 위치의 인덱스값을 읽어들임_
 	
-	type	va_arg(va_list ap, type);
+		type	va_arg(va_list ap, type);
 	
-	제대로 된 값을 읽기위해 데이터 타입명을 알규먼트로 전달
+		제대로 된 값을 읽기위해 데이터 타입명을 알규먼트로 전달
 	
-	매크로 함수이며 내부적으로 sizeof 연산자와 캐스트 연산자로 전달되어 타입명 전달 가능
+		매크로 함수이며 내부적으로 sizeof 연산자와 캐스트 연산자로 전달되어 타입명 전달 가능
 
 - #### _va_end(ap) : 별다른 동작없음_
 	
-	void	va_end(va_list ap);
+		void	va_end(va_list ap);
 	
-	실행되지 않아도 지장은 없지만 호환성 때문에 플랫폼에 따라 후처리 필요한 경우사용
+		실행되지 않아도 지장은 없지만 호환성 때문에 플랫폼에 따라 후처리 필요한 경우사용
 
 - #### _가변인수 함수 : 반드시 하나 이상의 고정인수 필요(가변인수 시작주소를 알기위해)_
 
