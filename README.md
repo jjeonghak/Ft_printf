@@ -66,35 +66,38 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 
 - #### _가변인수 함수 : 반드시 하나 이상의 고정인수 필요(가변인수 시작주소를 알기위해)_
 
-- #### int ft_printf(const char *format, ...)
+- #### int ft_printf(const char &#42format, ...)
 
-	**_format specifier prototype : %[flags width .precision length] specifier_**
+	**_format specifier prototype : &#37; &#91;flags&#93; &#91;width&#93 ;&#91;.precision&#93; &#91;length&#93; specifier_**
 
-	[flags]
+	&#91;flags&#93;
 
-	- : 주어진 필드의 왼쪽정렬(기본 : 오른쪽 정렬)
+	&#45; : 주어진 필드의 왼쪽정렬(기본 : 오른쪽 정렬)
 	
-	+ : 부호 출력
+	&#43; : 부호 출력
 	
 	(space) : 부호가 출력되지 않는다면 공백 출력
 	
-	hash mark# : 0, 0x, 0X 출력(a, A, e, E, f, F, g, G 형식 지정자와 사용)
+	&#35; : 0, 0x, 0X 출력(a, A, e, E, f, F, g, G 형식 지정자와 사용)
 	
 	0 : 길이 지정시 공백대신 0출력
+	
 
-	[width]
+	&#91;width&#93;
 
 	(number) : 최소인쇄길이, 공백을 이용해서 최소인쇄길이까지 채워 출력
 	
-	* : 가변인수로 길이 결정
+	&#42; : 가변인수로 길이 결정
+	
 
-	[.precision]
+	&#91;.precision&#93;
 
 	.number : (d, i, o, u, x, X) 서식자의 경우 앞에 number만큼 0으로 채워서 출력
 	
 		  (a, A, e, E, f, F) 서식자의 경우 number만큼 소수점자리 출력
 		
-	.* : 가변인수로 정밀도 결정
+	.&#42; : 가변인수로 정밀도 결정
+
 
 	specifier
 
@@ -134,7 +137,7 @@ putnbr와 putstr으로는 만족할 수 없기 때문에
 	
 	n : 아무것도 인쇄되지 않으며 지금까지 쓴 문자의 수를 가리키는 정수 포인터로 저장
 	
-	% : % 출력
+	&#37; : &#37; 출력
 
 <br>
 
