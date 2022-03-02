@@ -67,6 +67,8 @@ int	print_width_str(t_spec *fs, char *s)
 			fs->error = 1;
 		else
 			ft_putstr_fd(s, 1);
+		if (fs->precision != -1 && fs->precision <= INF)
+			free(s);
 		return (len);
 	}
 	if (fs->flags & 16)
