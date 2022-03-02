@@ -1,8 +1,10 @@
-# **Ft_printf
+# **Ft_printf**
 
 ##### Because putnbr and putstr aren't enough
 
-**이 프로젝트의 목적은 printf 함수 기능을 구현하는 것입니다.**
+putnbr와 putstr으로는 만족할 수 없기 때문에
+
+**이 프로젝트의 목적은 printf 함수를 구현하는 것입니다.**
 
 <br>
 
