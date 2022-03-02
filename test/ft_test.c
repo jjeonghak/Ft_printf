@@ -19,10 +19,10 @@ int	main(void)
 
 
 	ft_printf("\n\n");
-    ft_printf("********************************************************************************\n");
-    ft_printf("*                                                                              *\n");
+    	ft_printf("********************************************************************************\n");
+    	ft_printf("*                                                                              *\n");
 	ft_printf("*                                specifier : c                                 *\n");
-    ft_printf("*                                                                              *\n");
+    	ft_printf("*                                                                              *\n");
 	ft_printf("********************************************************************************\n");
 
 	ft_printf("\n< argument : NULL >\n");
@@ -56,7 +56,7 @@ int	main(void)
 
 	ft_printf("\n< width & precision >\n");
 	ft_printf("format : %%5.10c\t\targ : 'a'\t\tresult : %5.10c$\n", 'a');
-    ft_printf("format : %%10.5c\t\targ : 'a'\t\tresult : %10.5c$\n", 'a');
+    	ft_printf("format : %%10.5c\t\targ : 'a'\t\tresult : %10.5c$\n", 'a');
 	ft_printf("format : %%10.1c\t\targ : 'a'\t\tresult : %10.1c$\n", 'a');
 	
 	ft_printf("\n< width flags >\n");
@@ -94,7 +94,7 @@ int	main(void)
 	ft_printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
 	ft_printf("\n< argument flags : width >\n");
-    ft_printf("format : %%*c\t\targ : 10, 'a'\t\tresult : %*c$\n", 10, 'a');
+    	ft_printf("format : %%*c\t\targ : 10, 'a'\t\tresult : %*c$\n", 10, 'a');
 	ft_printf("format : %%*c\t\targ : -10, 'a'\t\tresult : %*c$\n", -10, 'a');
 	ft_printf("format : %%*c\t\targ : -+10, 'a'\t\tresult : %*c$\n", -+10, 'a');
 	ft_printf("format : %%*c\t\targ : +-10, 'a'\t\tresult : %*c$\n", +-10, 'a');
@@ -113,28 +113,28 @@ int	main(void)
 	ft_printf("format : %%20*c\t\targ : 10, 'a'\t\tresult : %20*c$\n", 10, 'a');
 	ft_printf("format : %%20*6c\t\targ : 10, 'a'\t\tresult : %20*6c$\n", 10, 'a');
 	
-	printf("\n< precision & width >\n");
+	ft_printf("\n< precision & width >\n");
 	ft_printf("format : %%.6-10c\targ : 'a'\t\tresult : %.6-10c$\n", 'a');
-    ft_printf("format : %%.6-10+c\targ : 'a'\t\tresult : %.6-10+c$\n", 'a');
-    ft_printf("format : %%.6+10 0c\targ : 'a'\t\tresult : %.6+10 0c$\n", 'a');
-    ft_printf("format : %%.10+6 0c\targ : 'a'\t\tresult : %.10+6 0c$\n", 'a');
-    ft_printf("format : %%.6+10-20c\targ : 'a'\t\tresult : %.6+10-20c$\n", 'a');
+    	ft_printf("format : %%.6-10+c\targ : 'a'\t\tresult : %.6-10+c$\n", 'a');
+    	ft_printf("format : %%.6+10 0c\targ : 'a'\t\tresult : %.6+10 0c$\n", 'a');
+    	ft_printf("format : %%.10+6 0c\targ : 'a'\t\tresult : %.10+6 0c$\n", 'a');
+    	ft_printf("format : %%.6+10-20c\targ : 'a'\t\tresult : %.6+10-20c$\n", 'a');
 	ft_printf("format : %%.6+20-10c\targ : 'a'\t\tresult : %.6+20-10c$\n", 'a');
 	
 	ft_printf("\n< precision & precision >\n");
-    ft_printf("format : %%.6-.10c\targ : 'a'\t\tresult : %.6-.10c$\n", 'a');
-    ft_printf("format : %%.6-.10+c\targ : 'a'\t\tresult : %.6-.10+c$\n", 'a');
-    ft_printf("format : %%.6+.10 0c\targ : 'a'\t\tresult : %.6+.10 0c$\n", 'a');
-    ft_printf("format : %%.10+.6 0c\targ : 'a'\t\tresult : %.10+.6 0c$\n", 'a');
-    ft_printf("format : %%.6+.10-.20c\targ : 'a'\t\tresult : %.6+.10-.20c$\n", 'a');
-    ft_printf("format : %%.6+.20-.10c\targ : 'a'\t\tresult : %.6+.20-.10c$\n", 'a');
+    	ft_printf("format : %%.6-.10c\targ : 'a'\t\tresult : %.6-.10c$\n", 'a');
+    	ft_printf("format : %%.6-.10+c\targ : 'a'\t\tresult : %.6-.10+c$\n", 'a');
+    	ft_printf("format : %%.6+.10 0c\targ : 'a'\t\tresult : %.6+.10 0c$\n", 'a');
+    	ft_printf("format : %%.10+.6 0c\targ : 'a'\t\tresult : %.10+.6 0c$\n", 'a');
+    	ft_printf("format : %%.6+.10-.20c\targ : 'a'\t\tresult : %.6+.10-.20c$\n", 'a');
+    	ft_printf("format : %%.6+.20-.10c\targ : 'a'\t\tresult : %.6+.20-.10c$\n", 'a');
 
 
 	ft_printf("\n\n");
-    ft_printf("********************************************************************************\n");
+    	ft_printf("********************************************************************************\n");
    	ft_printf("*                                                                              *\n");
 	ft_printf("*                                specifier : s                                 *\n");
-    ft_printf("*                                                                              *\n");
+    	ft_printf("*                                                                              *\n");
 	ft_printf("********************************************************************************\n");
 
 	ft_printf("\n< argument : NULL >\n");
@@ -168,7 +168,7 @@ int	main(void)
 
 	ft_printf("\n< width & precision >\n");
 	ft_printf("format : %%5.10s\t\targ : \"abcd\"\t\tresult : %5.10s$\n", "abcd");
-    ft_printf("format : %%10.5s\t\targ : \"abcd\"\t\tresult : %10.5s$\n", "abcd");
+    	ft_printf("format : %%10.5s\t\targ : \"abcd\"\t\tresult : %10.5s$\n", "abcd");
 	ft_printf("format : %%10.2s\t\targ : \"abcd\"\t\tresult : %10.2s$\n", "abcd");
 	
 	ft_printf("\n< width flags >\n");
@@ -227,24 +227,24 @@ int	main(void)
 
 	ft_printf("\n< precision & width >\n");
 	ft_printf("format : %%.6-10s\targ : \"abcd\"\t\tresult : %.6-10s$\n", "abcd");
-    ft_printf("format : %%.6-10+s\targ : \"abcd\"\t\tresult : %.6-10+s$\n", "abcd");
-    ft_printf("format : %%.6+10 0s\targ : \"abcd\"\t\tresult : %.6+10 0s$\n", "abcd");
-    ft_printf("format : %%.10+6 0s\targ : \"abcd\"\t\tresult : %.10+6 0s$\n", "abcd");
-    ft_printf("format : %%.6+10-20s\targ : \"abcd\"\t\tresult : %.6+10-20s$\n", "abcd");
-    ft_printf("format : %%.6+20-10s\targ : \"abcd\"\t\tresult : %.6+20-10s$\n", "abcd");
+    	ft_printf("format : %%.6-10+s\targ : \"abcd\"\t\tresult : %.6-10+s$\n", "abcd");
+    	ft_printf("format : %%.6+10 0s\targ : \"abcd\"\t\tresult : %.6+10 0s$\n", "abcd");
+    	ft_printf("format : %%.10+6 0s\targ : \"abcd\"\t\tresult : %.10+6 0s$\n", "abcd");
+    	ft_printf("format : %%.6+10-20s\targ : \"abcd\"\t\tresult : %.6+10-20s$\n", "abcd");
+    	ft_printf("format : %%.6+20-10s\targ : \"abcd\"\t\tresult : %.6+20-10s$\n", "abcd");
 	
 	ft_printf("\n< precision & precision >\n");
-    ft_printf("format : %%.6-.10s\targ : \"abcd\"\t\tresult : %.6-.10s$\n", "abcd");
-    ft_printf("format : %%.6-.10+s\targ : \"abcd\"\t\tresult : %.6-.10+s$\n", "abcd");
-    ft_printf("format : %%.6+.10 0s\targ : \"abcd\"\t\tresult : %.6+.10 0s$\n", "abcd");
-    ft_printf("format : %%.10+.6 0s\targ : \"abcd\"\t\tresult : %.10+.6 0s$\n", "abcd");
-    ft_printf("format : %%.6+.10-.20s\targ : \"abcd\"\t\tresult : %.6+.10-.20s$\n", "abcd");
-    ft_printf("format : %%.6+.20-.10s\targ : \"abcd\"\t\tresult : %.6+.20-.10s$\n", "abcd");
+    	ft_printf("format : %%.6-.10s\targ : \"abcd\"\t\tresult : %.6-.10s$\n", "abcd");
+    	ft_printf("format : %%.6-.10+s\targ : \"abcd\"\t\tresult : %.6-.10+s$\n", "abcd");
+    	ft_printf("format : %%.6+.10 0s\targ : \"abcd\"\t\tresult : %.6+.10 0s$\n", "abcd");
+    	ft_printf("format : %%.10+.6 0s\targ : \"abcd\"\t\tresult : %.10+.6 0s$\n", "abcd");
+    	ft_printf("format : %%.6+.10-.20s\targ : \"abcd\"\t\tresult : %.6+.10-.20s$\n", "abcd");
+    	ft_printf("format : %%.6+.20-.10s\targ : \"abcd\"\t\tresult : %.6+.20-.10s$\n", "abcd");
 
 
 	ft_printf("\n\n");
-    ft_printf("********************************************************************************\n");
-    ft_printf("*                                                                              *\n");
+    	ft_printf("********************************************************************************\n");
+    	ft_printf("*                                                                              *\n");
 	ft_printf("*                                specifier : p                                 *\n");
 	ft_printf("*                                                                              *\n");
 	ft_printf("********************************************************************************\n");
@@ -281,7 +281,7 @@ int	main(void)
 
 	ft_printf("\n< width & precision >\n");
 	ft_printf("format : %%5.10p\t\targ : 1234\t\tresult : %5.10p$\n", 1234);
-    ft_printf("format : %%10.5p\t\targ : 1234\t\tresult : %10.5p$\n", 1234);
+    	ft_printf("format : %%10.5p\t\targ : 1234\t\tresult : %10.5p$\n", 1234);
 	ft_printf("format : %%10.2p\t\targ : 1234\t\tresult : %10.2p$\n", 1234);
 
 	ft_printf("\n< width flags >\n");
@@ -320,7 +320,7 @@ int	main(void)
 
 
 	ft_printf("\n< argument flags : width >\n");
-    ft_printf("format : %%*p\t\targ : 10, 1234\t\tresult : %*p$\n", 10, 1234);
+    	ft_printf("format : %%*p\t\targ : 10, 1234\t\tresult : %*p$\n", 10, 1234);
 	ft_printf("format : %%*p\t\targ : -10, 1234\t\tresult : %*p$\n", -10, 1234);
 	ft_printf("format : %%*p\t\targ : -+10, 1234\tresult : %*p$\n", -+10, 1234);
 	ft_printf("format : %%*p\t\targ : +-10, 1234\tresult : %*p$\n", +-10, 1234);
@@ -329,7 +329,7 @@ int	main(void)
 	ft_printf("format : %%*p\t\targ : -+-+10, 1234\tresult : %*p$\n", -+-+10, 1234);
 	ft_printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
-	printf("\n< width & width >\n");
+	ft_printf("\n< width & width >\n");
 	ft_printf("format : %%6-10p\t\targ : 1234\t\tresult : %6-10p$\n", 1234);
 	ft_printf("format : %%6-10+p\targ : 1234\t\tresult : %6-10+p$\n", 1234);
 	ft_printf("format : %%6+10 0p\targ : 1234\t\tresult : %6+10 0p$\n", 1234);
@@ -341,19 +341,19 @@ int	main(void)
 
 	ft_printf("\n< precision & width >\n");
 	ft_printf("format : %%.6-10p\targ : 1234\t\tresult : %.6-10p$\n", 1234);
-    ft_printf("format : %%.6-10+p\targ : 1234\t\tresult : %.6-10+p$\n", 1234);
-    ft_printf("format : %%.6+10 0p\targ : 1234\t\tresult : %.6+10 0p$\n", 1234);
-    ft_printf("format : %%.10+6 0p\targ : 1234\t\tresult : %.10+6 0p$\n", 1234);
-    ft_printf("format : %%.6+10-20p\targ : 1234\t\tresult : %.6+10-20p$\n", 1234);
-    ft_printf("format : %%.6+20-10p\targ : 1234\t\tresult : %.6+20-10p$\n", 1234);
+    	ft_printf("format : %%.6-10+p\targ : 1234\t\tresult : %.6-10+p$\n", 1234);
+    	ft_printf("format : %%.6+10 0p\targ : 1234\t\tresult : %.6+10 0p$\n", 1234);
+    	ft_printf("format : %%.10+6 0p\targ : 1234\t\tresult : %.10+6 0p$\n", 1234);
+    	ft_printf("format : %%.6+10-20p\targ : 1234\t\tresult : %.6+10-20p$\n", 1234);
+    	ft_printf("format : %%.6+20-10p\targ : 1234\t\tresult : %.6+20-10p$\n", 1234);
 	
 	ft_printf("\n< precision & precision >\n");
-    ft_printf("format : %%.6-.10p\targ : 1234\t\tresult : %.6-.10p$\n", 1234);
-    ft_printf("format : %%.6-.10+p\targ : 1234\t\tresult : %.6-.10+p$\n", 1234);
-    ft_printf("format : %%.6+.10 0p\targ : 1234\t\tresult : %.6+.10 0p$\n", 1234);
-    ft_printf("format : %%.10+.6 0p\targ : 1234\t\tresult : %.10+.6 0p$\n", 1234);
-    ft_printf("format : %%.6+.10-.20p\targ : 1234\t\tresult : %.6+.10-.20p$\n", 1234);
-    ft_printf("format : %%.6+.20-.10p\targ : 1234\t\tresult : %.6+.20-.10p$\n", 1234);
+    	ft_printf("format : %%.6-.10p\targ : 1234\t\tresult : %.6-.10p$\n", 1234);
+    	ft_printf("format : %%.6-.10+p\targ : 1234\t\tresult : %.6-.10+p$\n", 1234);
+    	ft_printf("format : %%.6+.10 0p\targ : 1234\t\tresult : %.6+.10 0p$\n", 1234);
+    	ft_printf("format : %%.10+.6 0p\targ : 1234\t\tresult : %.10+.6 0p$\n", 1234);
+    	ft_printf("format : %%.6+.10-.20p\targ : 1234\t\tresult : %.6+.10-.20p$\n", 1234);
+    	ft_printf("format : %%.6+.20-.10p\targ : 1234\t\tresult : %.6+.20-.10p$\n", 1234);
 	
 	ft_printf("\n< limits >\n");
 	ft_printf("format : %%p\targ : -1\t\t\tresult : %p$\n", -1);
@@ -399,7 +399,7 @@ int	main(void)
 
 	ft_printf("\n< width & precision >\n");
 	ft_printf("format : %%5.10d\t\targ : 1234\t\tresult : %5.10d$\n", 1234);
-    ft_printf("format : %%10.5d\t\targ : 1234\t\tresult : %10.5d$\n", 1234);
+    	ft_printf("format : %%10.5d\t\targ : 1234\t\tresult : %10.5d$\n", 1234);
 	ft_printf("format : %%10.2d\t\targ : 1234\t\tresult : %10.2d$\n", 1234);
 
 	ft_printf("\n< width flags >\n");
@@ -437,7 +437,7 @@ int	main(void)
 	ft_printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
 	ft_printf("\n< argument flags : width >\n");
-    ft_printf("format : %%*d\t\targ : 10, 1234\t\tresult : %*d$\n", 10, 1234);
+    	ft_printf("format : %%*d\t\targ : 10, 1234\t\tresult : %*d$\n", 10, 1234);
 	ft_printf("format : %%*d\t\targ : -10, 1234\t\tresult : %*d$\n", -10, 1234);
 	ft_printf("format : %%*d\t\targ : -+10, 1234\tresult : %*d$\n", -+10, 1234);
 	ft_printf("format : %%*d\t\targ : +-10, 1234\tresult : %*d$\n", +-10, 1234);
@@ -458,19 +458,19 @@ int	main(void)
 
 	ft_printf("\n< precision & width >\n");
 	ft_printf("format : %%.6-10d\targ : 1234\t\tresult : %.6-10d$\n", 1234);
-    ft_printf("format : %%.6-10+d\targ : 1234\t\tresult : %.6-10+d$\n", 1234);
-    ft_printf("format : %%.6+10 0d\targ : 1234\t\tresult : %.6+10 0d$\n", 1234);
-    ft_printf("format : %%.10+6 0d\targ : 1234\t\tresult : %.10+6 0d$\n", 1234);
-    ft_printf("format : %%.6+10-20d\targ : 1234\t\tresult : %.6+10-20d$\n", 1234);
-    ft_printf("format : %%.6+20-10d\targ : 1234\t\tresult : %.6+20-10d$\n", 1234);
+    	ft_printf("format : %%.6-10+d\targ : 1234\t\tresult : %.6-10+d$\n", 1234);
+    	ft_printf("format : %%.6+10 0d\targ : 1234\t\tresult : %.6+10 0d$\n", 1234);
+    	ft_printf("format : %%.10+6 0d\targ : 1234\t\tresult : %.10+6 0d$\n", 1234);
+    	ft_printf("format : %%.6+10-20d\targ : 1234\t\tresult : %.6+10-20d$\n", 1234);
+    	ft_printf("format : %%.6+20-10d\targ : 1234\t\tresult : %.6+20-10d$\n", 1234);
 	
 	ft_printf("\n< precision & precision >\n");
-    ft_printf("format : %%.6-.10d\targ : 1234\t\tresult : %.6-.10d$\n", 1234);
-    ft_printf("format : %%.6-.10+d\targ : 1234\t\tresult : %.6-.10+d$\n", 1234);
-    ft_printf("format : %%.6+.10 0d\targ : 1234\t\tresult : %.6+.10 0d$\n", 1234);
-    ft_printf("format : %%.10+.6 0d\targ : 1234\t\tresult : %.10+.6 0d$\n", 1234);
-    ft_printf("format : %%.6+.10-.20d\targ : 1234\t\tresult : %.6+.10-.20d$\n", 1234);
-    ft_printf("format : %%.6+.20-.10d\targ : 1234\t\tresult : %.6+.20-.10d$\n", 1234);
+    	ft_printf("format : %%.6-.10d\targ : 1234\t\tresult : %.6-.10d$\n", 1234);
+    	ft_printf("format : %%.6-.10+d\targ : 1234\t\tresult : %.6-.10+d$\n", 1234);
+    	ft_printf("format : %%.6+.10 0d\targ : 1234\t\tresult : %.6+.10 0d$\n", 1234);
+    	ft_printf("format : %%.10+.6 0d\targ : 1234\t\tresult : %.10+.6 0d$\n", 1234);
+    	ft_printf("format : %%.6+.10-.20d\targ : 1234\t\tresult : %.6+.10-.20d$\n", 1234);
+    	ft_printf("format : %%.6+.20-.10d\targ : 1234\t\tresult : %.6+.20-.10d$\n", 1234);
 
 
 
@@ -513,7 +513,7 @@ int	main(void)
 
 	ft_printf("\n< width & precision >\n");
 	ft_printf("format : %%5.10u\t\targ : 1234\t\tresult : %5.10u$\n", 1234);
-    ft_printf("format : %%10.5u\t\targ : 1234\t\tresult : %10.5u$\n", 1234);
+    	ft_printf("format : %%10.5u\t\targ : 1234\t\tresult : %10.5u$\n", 1234);
 	ft_printf("format : %%10.2u\t\targ : 1234\t\tresult : %10.2u$\n", 1234);
 
 	ft_printf("\n< width flags >\n");
@@ -552,7 +552,7 @@ int	main(void)
 
 	ft_printf("\n< argument flags : width >\n");
 	ft_printf("format : %%*u\t\targ : -10, 1234\t\tresult : %*u$\n", -10, 1234);
-    ft_printf("format : %%*u\t\targ : 10, 1234\t\tresult : %*u$\n", 10, 1234);
+    	ft_printf("format : %%*u\t\targ : 10, 1234\t\tresult : %*u$\n", 10, 1234);
 	ft_printf("format : %%*u\t\targ : -+10, 1234\tresult : %*u$\n", -+10, 1234);
 	ft_printf("format : %%*u\t\targ : +-10, 1234\tresult : %*u$\n", +-10, 1234);
 	ft_printf("format : %%*u\t\targ : -+-10, 1234\tresult : %*u$\n", -+-10, 1234);
@@ -572,19 +572,19 @@ int	main(void)
 
 	ft_printf("\n< precision & width >\n");
 	ft_printf("format : %%.6-10u\targ : 1234\t\tresult : %.6-10u$\n", 1234);
-    ft_printf("format : %%.6-10+u\targ : 1234\t\tresult : %.6-10+u$\n", 1234);
-    ft_printf("format : %%.6+10 0u\targ : 1234\t\tresult : %.6+10 0u$\n", 1234);
-    ft_printf("format : %%.10+6 0u\targ : 1234\t\tresult : %.10+6 0u$\n", 1234);
-    ft_printf("format : %%.6+10-20u\targ : 1234\t\tresult : %.6+10-20u$\n", 1234);
-    ft_printf("format : %%.6+20-10u\targ : 1234\t\tresult : %.6+20-10u$\n", 1234);
+    	ft_printf("format : %%.6-10+u\targ : 1234\t\tresult : %.6-10+u$\n", 1234);
+    	ft_printf("format : %%.6+10 0u\targ : 1234\t\tresult : %.6+10 0u$\n", 1234);
+    	ft_printf("format : %%.10+6 0u\targ : 1234\t\tresult : %.10+6 0u$\n", 1234);
+    	ft_printf("format : %%.6+10-20u\targ : 1234\t\tresult : %.6+10-20u$\n", 1234);
+    	ft_printf("format : %%.6+20-10u\targ : 1234\t\tresult : %.6+20-10u$\n", 1234);
 	
 	ft_printf("\n< precision & precision >\n");
-    ft_printf("format : %%.6-.10u\targ : 1234\t\tresult : %.6-.10u$\n", 1234);
-    ft_printf("format : %%.6-.10+u\targ : 1234\t\tresult : %.6-.10+u$\n", 1234);
-    ft_printf("format : %%.6+.10 0u\targ : 1234\t\tresult : %.6+.10 0u$\n", 1234);
-    ft_printf("format : %%.10+.6 0u\targ : 1234\t\tresult : %.10+.6 0u$\n", 1234);
-    ft_printf("format : %%.6+.10-.20u\targ : 1234\t\tresult : %.6+.10-.20u$\n", 1234);
-    ft_printf("format : %%.6+.20-.10u\targ : 1234\t\tresult : %.6+.20-.10u$\n", 1234);
+    	ft_printf("format : %%.6-.10u\targ : 1234\t\tresult : %.6-.10u$\n", 1234);
+    	ft_printf("format : %%.6-.10+u\targ : 1234\t\tresult : %.6-.10+u$\n", 1234);
+    	ft_printf("format : %%.6+.10 0u\targ : 1234\t\tresult : %.6+.10 0u$\n", 1234);
+    	ft_printf("format : %%.10+.6 0u\targ : 1234\t\tresult : %.10+.6 0u$\n", 1234);
+    	ft_printf("format : %%.6+.10-.20u\targ : 1234\t\tresult : %.6+.10-.20u$\n", 1234);
+    	ft_printf("format : %%.6+.20-.10u\targ : 1234\t\tresult : %.6+.20-.10u$\n", 1234);
 
 	ft_printf("\n< limits >\n");
 	ft_printf("format : %%u\t\targ : -1\t\tresult : %u$\n", -1);
@@ -628,7 +628,7 @@ int	main(void)
 
 	ft_printf("\n< width & precision >\n");
 	ft_printf("format : %%5.10x\t\targ : 1234\t\tresult : %5.10x$\n", 1234);
-    ft_printf("format : %%10.5x\t\targ : 1234\t\tresult : %10.5x$\n", 1234);
+    	ft_printf("format : %%10.5x\t\targ : 1234\t\tresult : %10.5x$\n", 1234);
 	ft_printf("format : %%10.2x\t\targ : 1234\t\tresult : %10.2x$\n", 1234);
 
 	ft_printf("\n< width flags >\n");
@@ -667,7 +667,7 @@ int	main(void)
 	ft_printf("\n*** error: lvalue required as increment operand(--, ++, ---, --+, +++, ...)\n");
 
 	ft_printf("\n< argument flags : width >\n");
-    ft_printf("format : %%*x\t\targ : 10, 1234\t\tresult : %*x$\n", 10, 1234);
+    	ft_printf("format : %%*x\t\targ : 10, 1234\t\tresult : %*x$\n", 10, 1234);
 	ft_printf("format : %%*x\t\targ : -10, 1234\t\tresult : %*x$\n", -10, 1234);
 	ft_printf("format : %%*x\t\targ : -+10, 1234\tresult : %*x$\n", -+10, 1234);
 	ft_printf("format : %%*x\t\targ : +-10, 1234\tresult : %*x$\n", +-10, 1234);
@@ -688,19 +688,19 @@ int	main(void)
 
 	ft_printf("\n< precision & width >\n");
 	ft_printf("format : %%.6-10d\targ : 1234\t\tresult : %.6-10x$\n", 1234);
-    ft_printf("format : %%.6-10+x\targ : 1234\t\tresult : %.6-10+x$\n", 1234);
-    ft_printf("format : %%.6+10 0x\targ : 1234\t\tresult : %.6+10 0x$\n", 1234);
-    ft_printf("format : %%.10+6 0x\targ : 1234\t\tresult : %.10+6 0x$\n", 1234);
-    ft_printf("format : %%.6+10-20x\targ : 1234\t\tresult : %.6+10-20x$\n", 1234);
-    ft_printf("format : %%.6+20-10x\targ : 1234\t\tresult : %.6+20-10x$\n", 1234);
+    	ft_printf("format : %%.6-10+x\targ : 1234\t\tresult : %.6-10+x$\n", 1234);
+    	ft_printf("format : %%.6+10 0x\targ : 1234\t\tresult : %.6+10 0x$\n", 1234);
+    	ft_printf("format : %%.10+6 0x\targ : 1234\t\tresult : %.10+6 0x$\n", 1234);
+    	ft_printf("format : %%.6+10-20x\targ : 1234\t\tresult : %.6+10-20x$\n", 1234);
+    	ft_printf("format : %%.6+20-10x\targ : 1234\t\tresult : %.6+20-10x$\n", 1234);
 	
 	ft_printf("\n< precision & precision >\n");
-    ft_printf("format : %%.6-.10x\targ : 1234\t\tresult : %.6-.10x$\n", 1234);
-    ft_printf("format : %%.6-.10+x\targ : 1234\t\tresult : %.6-.10+x$\n", 1234);
-    ft_printf("format : %%.6+.10 0x\targ : 1234\t\tresult : %.6+.10 0x$\n", 1234);
-    ft_printf("format : %%.10+.6 0x\targ : 1234\t\tresult : %.10+.6 0x$\n", 1234);
-    ft_printf("format : %%.6+.10-.20x\targ : 1234\t\tresult : %.6+.10-.20x$\n", 1234);
-    ft_printf("format : %%.6+.20-.10x\targ : 1234\t\tresult : %.6+.20-.10x$\n", 1234);
+    	ft_printf("format : %%.6-.10x\targ : 1234\t\tresult : %.6-.10x$\n", 1234);
+    	ft_printf("format : %%.6-.10+x\targ : 1234\t\tresult : %.6-.10+x$\n", 1234);
+    	ft_printf("format : %%.6+.10 0x\targ : 1234\t\tresult : %.6+.10 0x$\n", 1234);
+    	ft_printf("format : %%.10+.6 0x\targ : 1234\t\tresult : %.10+.6 0x$\n", 1234);
+    	ft_printf("format : %%.6+.10-.20x\targ : 1234\t\tresult : %.6+.10-.20x$\n", 1234);
+    	ft_printf("format : %%.6+.20-.10x\targ : 1234\t\tresult : %.6+.20-.10x$\n", 1234);
 	
 	ft_printf("\n< limits >\n");
 	ft_printf("format : %%x\t\targ : -1\t\tresult : %x$\n", -1);
