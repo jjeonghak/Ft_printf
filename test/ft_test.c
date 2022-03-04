@@ -6,7 +6,7 @@ int	main(void)
 	ft_printf("********************************************************************************\n");
 	ft_printf("*                                                                              *\n");
 	ft_printf("*                              TEST : FT_PRINTF                                *\n");
-	ft_printf("*                             	  by jeonghak                                  *\n");
+	ft_printf("*                                 by jeonghak                                  *\n");
 	ft_printf("*                                                                              *\n");
 	ft_printf("*                                                                              *\n");
 	ft_printf("*                                                                              *\n");
@@ -705,6 +705,24 @@ int	main(void)
 	ft_printf("\n< limits >\n");
 	ft_printf("format : %%x\t\targ : -1\t\tresult : %x$\n", -1);
 
+	ft_printf("\n\n");
+	ft_printf("********************************************************************************\n");
+	ft_printf("*                                                                              *\n");
+	ft_printf("*                               return value                                   *\n");
+	ft_printf("*                                                                              *\n");
+	ft_printf("********************************************************************************\n");
+
+	ft_printf("arg : ft_printf(\"%%\")\t\t\t\treturn value : %d$\n", ft_printf("%"));
+	ft_printf("\narg : ft_printf(\"ab%%\")\t\t\t\treturn value : %d$\n", ft_printf("ab%"));
+	ft_printf("\narg : ft_printf(\"ab%%b\")\t\t\t\treturn value : %d$\n", ft_printf("ab%b"));
+	ft_printf("\narg : ft_printf(\"ab%%bd\", 1)\t\t\treturn value : %d$\n", ft_printf("ab%bd", 1));
+	ft_printf("\narg : ft_printf(\"%%2147483647\")\t\t\treturn value : %d$\n", ft_printf("%2147483647"));
+	ft_printf("\narg : ft_printf(\"%%2147483647b\")\t\t\treturn value : %d$\n", ft_printf("%2147483647b"));
+	ft_printf("\narg : ft_printf(\"%%2147483647d\", 1)\t\treturn value : %d$\n", ft_printf("%2147483647d", 1));
+	ft_printf("\narg : ft_printf(\"%%.2147483647d\", 1)\t\treturn value : %d$\n", ft_printf("%.2147483647d", 1));
+	ft_printf("\narg : ft_printf(\"%%.2147483647s\", 0)\t\treturn value : %d$\n", ft_printf("%.2147483647s", 0));
+	
+	
 	ft_printf("\n\n\n");
 	return 0;
 }
