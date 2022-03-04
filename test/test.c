@@ -707,6 +707,23 @@ int	main(void)
 	printf("\n< limits >\n");
 	printf("format : %%x\t\targ : -1\t\tresult : %x$\n", -1);
 
+	printf("\n\n");
+	printf("********************************************************************************\n");
+	printf("*                                                                              *\n");
+	printf("*                               return value                                   *\n");
+	printf("*                                                                              *\n");
+	printf("********************************************************************************\n");
+
+	printf("arg : printf(\"%%\")\t\t\t\treturn value : %d$\n", printf("%"));
+	printf("\narg : printf(\"ab%%\")\t\t\t\treturn value : %d$\n", printf("ab%"));
+	printf("\narg : printf(\"ab%%b\")\t\t\t\treturn value : %d$\n", printf("ab%b"));
+	printf("\narg : printf(\"ab%%bd\", 1)\t\t\treturn value : %d$\n", printf("ab%bd", 1));
+	printf("\narg : printf(\"%%2147483647\")\t\t\treturn value : %d$\n", printf("%2147483647"));
+	printf("\narg : printf(\"%%2147483647b\")\t\t\treturn value : %d$\n", printf("%2147483647b"));
+	printf("\narg : printf(\"%%2147483647d\", 1)\t\t\treturn value : %d$\n", printf("%2147483647d", 1));
+	printf("\narg : printf(\"%%.2147483647d\", 1)\t\treturn value : %d$\n", printf("%.2147483647d", 1));
+	printf("\narg : printf(\"%%.2147483647s\", 0)\t\treturn value : %d$\n", printf("%.2147483647s", 0));
+	
 	printf("\n\n\n");
 	return 0;
 }
