@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:32:03 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/25 11:55:38 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:30:05 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_spec
 }		t_spec;
 
 int			ft_printf(const char *format, ...);
-int			parse_specifier(t_spec *fs, va_list ap);
+int			parse_specifier(t_spec *fs, va_list ap, int *i);
 int			print_width_char(t_spec *fs, char c);
 int			print_width_str(t_spec *fs, char *s);
 int			print_nbr(t_spec *fs, unsigned long long n);

@@ -6,7 +6,7 @@
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:31:15 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/27 17:33:37 by jeonghak         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:31:45 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,20 @@ static void	init_format_specifier(t_spec *fs, unsigned int pcnt)
 static int	check_error(t_spec *fs, const char *format, int *i)
 {
 	if (*(format + *i) == '\0')
-		return (1);
-	else if (fs->width + (long long)fs->total_width > INF)
+		return (0);
+	else if (fs->width + (long long)fs->total_width >= INF)
 		return (1);
 	else if (*(format + *i) == 's' || *(format + *i) == 'c')
 		return (0);
-	else if (fs->precision + (long long)fs->total_width > INF)
-		return (1);
+	else if (fs->precision != -1)
+		if (fs->precision + (long long)fs->total_width >= INF)
+			return (1);
 	return (0);
 }
 
 static int	parse_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 {
+	*i += 1;
 	while (*(format + *i) != '\0')
 	{
 		if (ft_strchr(FLAGS, *(format + *i)))
@@ -48,21 +50,17 @@ static int	parse_subseq(t_spec *fs, va_list ap, const char *format, int *i)
 			parse_precision(fs, ap, format, i);
 		else if (ft_isdigit(*(format + *i)) || *(format + *i) == '*')
 			parse_width(fs, ap, format, i);
-		else if (ft_strchr(SPECS, *(format + *i)))
-			break ;
 		else
-			*i += 1;
+			break ;
 	}
 	if (check_error(fs, format, i))
-	{
 		fs->error = 1;
-		return (0);
-	}
-	else
+	else if (*(format + *i) != '\0')
 	{
 		fs->spec = *(format + *i);
-		return (parse_specifier(fs, ap));
+		return (parse_specifier(fs, ap, i));
 	}
+	return (0);
 }
 
 static int	parse_format(va_list ap, const char *format)
@@ -76,9 +74,10 @@ static int	parse_format(va_list ap, const char *format)
 	init_format_specifier(&fs, pcnt);
 	while (*(format + i) != '\0')
 	{
-		if (*(format + i) == '%')
+		if (fs.error || pcnt >= INF)
+			return (-1);
+		else if (*(format + i) == '%')
 		{
-			i++;
 			init_format_specifier(&fs, pcnt);
 			pcnt += (unsigned int)parse_subseq(&fs, ap, format, &i);
 		}
@@ -86,10 +85,8 @@ static int	parse_format(va_list ap, const char *format)
 		{
 			ft_putchar_fd(*(format + i), 1);
 			pcnt++;
+			i++;
 		}
-		i++;
-		if (fs.error || (pcnt == INF && *(format + i) != '\0'))
-			return (-1);
 	}
 	return ((int)pcnt);
 }

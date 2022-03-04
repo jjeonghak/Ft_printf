@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeonghak <rlawjdgks318@naver.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 11:01:48 by jeonghak          #+#    #+#             */
-/*   Updated: 2022/02/27 17:35:11 by jeonghak         ###   ########.fr       */
+/*   Created: 2022/03/04 13:31:21 by jeonghak          #+#    #+#             */
+/*   Updated: 2022/03/04 13:31:25 by jeonghak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,13 @@ void	parse_precision(t_spec *fs, va_list ap, const char *format, int *i)
 	return ;
 }
 
-int	parse_specifier(t_spec *fs, va_list ap)
+int	parse_specifier(t_spec *fs, va_list ap, int *i)
 {
 	unsigned long long	n;
 
+	if (!ft_strchr(SPECS, fs->spec))
+		return (0);
+	*i += 1;
 	if (fs->spec == 'c')
 		return (print_width_char(fs, va_arg(ap, int)));
 	else if (fs->spec == 's')
